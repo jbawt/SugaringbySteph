@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import FAQItem from '../components/FAQItem'
+import ScrollReveal from '../components/ScrollReveal'
 
 const faqs = [
   {
@@ -50,19 +51,19 @@ export default function FAQ() {
     <div className="pt-20">
       {/* Header */}
       <section className="py-16 bg-cream-200">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Frequently Asked Questions</h1>
           <div className="gold-divider mb-6" />
           <p className="text-lg text-bronze-500/80">
             Everything you need to know about sugaring
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* FAQ List */}
       <section className="py-16 bg-white">
-        <div className="max-w-3xl mx-auto px-4">
-          <div className="card p-6 md:p-8">
+        <ScrollReveal className="max-w-3xl mx-auto px-4">
+          <div className="card card-static p-6 md:p-8">
             {faqs.map((faq, index) => (
               <FAQItem 
                 key={index}
@@ -72,12 +73,12 @@ export default function FAQ() {
               />
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Still Have Questions */}
       <section className="py-16 bg-cream-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gold-100 flex items-center justify-center">
             <svg className="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -90,7 +91,7 @@ export default function FAQ() {
           <Link to="/contact" className="btn-primary">
             Contact Me
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   )

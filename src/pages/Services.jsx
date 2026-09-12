@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
+import ScrollReveal from '../components/ScrollReveal'
 
 const services = {
   intimate: {
@@ -52,79 +53,85 @@ export default function Services() {
     <div className="pt-20">
       {/* Header */}
       <section className="py-16 bg-cream-200">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Our Services</h1>
           <div className="gold-divider mb-6" />
           <p className="text-lg text-bronze-500/80">
             Natural, gentle hair removal for every area. All services use organic sugar paste 
             made with just sugar, lemon, and water.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Intimate Services */}
       <section id="intimate" className="py-16 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-12 bg-gold-300" />
-            <h2 className="font-script text-4xl text-gold-600">{services.intimate.title}</h2>
-            <div className="h-px w-12 bg-gold-300" />
-          </div>
-          <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
-            {services.intimate.description}
-          </p>
+          <ScrollReveal>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-gold-300" />
+              <h2 className="font-script text-4xl text-gold-600">{services.intimate.title}</h2>
+              <div className="h-px w-12 bg-gold-300" />
+            </div>
+            <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
+              {services.intimate.description}
+            </p>
+          </ScrollReveal>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.intimate.items.map((service) => (
               <ServiceCard key={service.name} {...service} />
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Body Services */}
       <section id="body" className="py-16 bg-cream-100 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-12 bg-gold-300" />
-            <h2 className="font-script text-4xl text-gold-600">{services.body.title}</h2>
-            <div className="h-px w-12 bg-gold-300" />
-          </div>
-          <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
-            {services.body.description}
-          </p>
+          <ScrollReveal>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-gold-300" />
+              <h2 className="font-script text-4xl text-gold-600">{services.body.title}</h2>
+              <div className="h-px w-12 bg-gold-300" />
+            </div>
+            <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
+              {services.body.description}
+            </p>
+          </ScrollReveal>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <ScrollReveal stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.body.items.map((service) => (
               <ServiceCard key={service.name} {...service} />
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Face Services */}
       <section id="face" className="py-16 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-12 bg-gold-300" />
-            <h2 className="font-script text-4xl text-gold-600">{services.face.title}</h2>
-            <div className="h-px w-12 bg-gold-300" />
-          </div>
-          <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
-            {services.face.description}
-          </p>
+          <ScrollReveal>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-px w-12 bg-gold-300" />
+              <h2 className="font-script text-4xl text-gold-600">{services.face.title}</h2>
+              <div className="h-px w-12 bg-gold-300" />
+            </div>
+            <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
+              {services.face.description}
+            </p>
+          </ScrollReveal>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto">
+          <ScrollReveal stagger className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto">
             {services.face.items.map((service) => (
               <ServiceCard key={service.name} {...service} />
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* First Time Info */}
       <section className="py-16 bg-cream-200">
-        <div className="max-w-4xl mx-auto px-4">
+        <ScrollReveal className="max-w-4xl mx-auto px-4">
           <div className="card p-8 md:p-12">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="flex-shrink-0">
@@ -168,12 +175,12 @@ export default function Services() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-gold-500 to-gold-600">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="font-script text-4xl text-white mb-4">Ready to Book?</h2>
           <p className="text-white/90 mb-8">
             Contact me to schedule your appointment
@@ -184,7 +191,7 @@ export default function Services() {
           >
             Book Now
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   )

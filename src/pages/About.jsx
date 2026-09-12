@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ScrollReveal from '../components/ScrollReveal'
 
 const values = [
   {
@@ -50,16 +51,16 @@ export default function About() {
     <div className="pt-20">
       {/* Header */}
       <section className="py-16 bg-cream-200">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Meet Steph</h1>
           <div className="gold-divider" />
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Main About Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Photo Placeholder */}
             <div className="order-2 md:order-1">
               <div className="aspect-[4/5] rounded-2xl bg-cream-200 border-2 border-gold-200 flex items-center justify-center">
@@ -102,39 +103,43 @@ export default function About() {
                 </p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Why I Chose Sugaring */}
       <section className="py-16 bg-cream-100">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="section-heading">Why I Chose Sugaring</h2>
-          <p className="section-subheading">
-            After trying many hair removal methods, I fell in love with sugaring for its 
-            natural approach and amazing results
-          </p>
+          <ScrollReveal>
+            <h2 className="section-heading">Why I Chose Sugaring</h2>
+            <p className="section-subheading">
+              After trying many hair removal methods, I fell in love with sugaring for its 
+              natural approach and amazing results
+            </p>
+          </ScrollReveal>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {whySugaring.map((item) => (
               <div key={item.title} className="card p-8">
                 <h3 className="font-script text-2xl text-gold-600 mb-4">{item.title}</h3>
                 <p className="text-bronze-500/70">{item.description}</p>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Values */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="section-heading">My Promise to You</h2>
-          <p className="section-subheading">
-            Every client deserves the best experience possible
-          </p>
+          <ScrollReveal>
+            <h2 className="section-heading">My Promise to You</h2>
+            <p className="section-subheading">
+              Every client deserves the best experience possible
+            </p>
+          </ScrollReveal>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value) => (
               <div key={value.title} className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gold-100 flex items-center justify-center text-gold-600">
@@ -144,13 +149,13 @@ export default function About() {
                 <p className="text-bronze-500/70">{value.description}</p>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-gold-500 to-gold-600">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="font-script text-4xl text-white mb-4">Let's Work Together</h2>
           <p className="text-white/90 mb-8">
             I'd love to help you experience the benefits of sugaring
@@ -161,7 +166,7 @@ export default function About() {
           >
             Get in Touch
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   )

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import logo from '../assets/Logo_transparent.png'
+import ScrollReveal from '../components/ScrollReveal'
 
 const services = [
   'Brazilian',
@@ -51,10 +52,11 @@ export default function Contact() {
     return (
       <div className="pt-20">
         <section className="py-32 bg-cream-100">
-          <div className="max-w-xl mx-auto px-4 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gold-100 flex items-center justify-center">
-              <svg className="w-10 h-10 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <div className="page-enter max-w-xl mx-auto px-4 text-center">
+            <div className="checkmark-wrap w-20 h-20 mx-auto mb-6 rounded-full bg-gold-100 flex items-center justify-center">
+              <svg className="w-10 h-10" viewBox="0 0 52 52" fill="none">
+                <circle className="checkmark-circle" cx="26" cy="26" r="24" />
+                <path className="checkmark-check" d="M16 26.5l7 7 13.5-14" />
               </svg>
             </div>
             <h1 className="font-script text-4xl text-gold-600 mb-4">Thank You!</h1>
@@ -74,19 +76,19 @@ export default function Contact() {
     <div className="pt-20">
       {/* Header */}
       <section className="py-16 bg-cream-200">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Get in Touch</h1>
           <div className="gold-divider mb-6" />
           <p className="text-lg text-bronze-500/80">
             I'd love to hear from you! Fill out the form below or reach out directly.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Contact Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <ScrollReveal stagger className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
               <form 
@@ -95,7 +97,7 @@ export default function Contact() {
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                className="card p-8"
+                className="card card-static p-8"
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <p className="hidden">
@@ -269,7 +271,7 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

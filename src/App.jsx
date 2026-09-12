@@ -18,19 +18,31 @@ function ScrollToTop() {
   return null
 }
 
+function PageTransition({ children }) {
+  const { pathname } = useLocation()
+
+  return (
+    <div key={pathname} className="page-enter">
+      {children}
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Navbar />
       <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </PageTransition>
       </main>
       <Footer />
     </div>
