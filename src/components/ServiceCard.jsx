@@ -1,6 +1,9 @@
+import { CornerAccent } from './Botanicals'
+
 export default function ServiceCard({ name, price, description, featured = false }) {
   return (
-    <div className={`card p-6 ${featured ? 'ring-2 ring-gold-500' : ''}`}>
+    <div className={`card relative p-6 ${featured ? 'ring-2 ring-gold-500' : ''}`}>
+      <CornerAccent position="top-right" className="opacity-[0.16]" />
       {featured && (
         <span className="inline-block px-3 py-1 text-xs font-medium text-gold-600 bg-gold-100 rounded-full mb-3">
           Most Popular

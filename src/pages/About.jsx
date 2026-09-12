@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
+import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
 
 const values = [
   {
@@ -53,7 +54,7 @@ export default function About() {
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Meet Steph</h1>
-          <div className="gold-divider" />
+          <FloralDivider />
         </ScrollReveal>
       </section>
 
@@ -62,8 +63,9 @@ export default function About() {
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Photo Placeholder */}
-            <div className="order-2 md:order-1">
-              <div className="aspect-[4/5] rounded-2xl bg-cream-200 border-2 border-gold-200 flex items-center justify-center">
+            <div className="order-2 md:order-1 relative">
+              <CurvedBranch className="hidden md:block absolute -bottom-4 -left-6 w-36 h-36 opacity-30 pointer-events-none" />
+              <div className="relative aspect-[4/5] rounded-2xl bg-cream-200 border-2 border-gold-200 flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gold-100 flex items-center justify-center">
                     <svg className="w-12 h-12 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,10 +110,13 @@ export default function About() {
       </section>
 
       {/* Why I Chose Sugaring */}
-      <section className="py-16 bg-cream-100">
+      <section className="relative py-16 bg-cream-100 overflow-hidden">
+        <LeafSprig className="hidden md:block absolute top-10 left-4 w-16 h-36 opacity-20 pointer-events-none" />
+        <LeafSprig flip className="hidden md:block absolute top-10 right-4 w-16 h-36 opacity-20 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <h2 className="section-heading">Why I Chose Sugaring</h2>
+            <FloralDivider className="mb-6" />
             <p className="section-subheading">
               After trying many hair removal methods, I fell in love with sugaring for its 
               natural approach and amazing results
@@ -120,7 +125,8 @@ export default function About() {
           
           <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {whySugaring.map((item) => (
-              <div key={item.title} className="card p-8">
+              <div key={item.title} className="card relative p-8">
+                <CornerAccent position="bottom-left" className="opacity-[0.15]" />
                 <h3 className="font-script text-2xl text-gold-600 mb-4">{item.title}</h3>
                 <p className="text-bronze-500/70">{item.description}</p>
               </div>

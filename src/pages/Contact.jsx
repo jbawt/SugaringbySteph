@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import logo from '../assets/Logo_transparent.png'
 import ScrollReveal from '../components/ScrollReveal'
+import { FloralDivider, SidebarBotanical, CornerAccent, LeafSprig } from '../components/Botanicals'
 
 const services = [
   'Brazilian',
@@ -78,7 +79,7 @@ export default function Contact() {
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Get in Touch</h1>
-          <div className="gold-divider mb-6" />
+          <FloralDivider className="mb-6" />
           <p className="text-lg text-bronze-500/80">
             I'd love to hear from you! Fill out the form below or reach out directly.
           </p>
@@ -197,7 +198,8 @@ export default function Contact() {
 
             {/* Contact Info */}
             <div className="lg:pl-8">
-              <div className="sticky top-28">
+              <div className="sticky top-28 relative">
+                <SidebarBotanical className="hidden lg:block absolute -right-4 top-0 w-24 h-48 opacity-20 pointer-events-none" />
                 <h2 className="font-script text-3xl text-gold-600 mb-8">Contact Information</h2>
                 
                 <div className="space-y-6">
@@ -256,8 +258,11 @@ export default function Contact() {
                 </div>
 
                 {/* Decorative Element */}
-                <div className="mt-12 p-6 bg-cream-100 rounded-2xl border border-gold-200">
-                  <div className="flex items-center gap-4">
+                <div className="relative mt-12 p-6 bg-cream-100 rounded-2xl border border-gold-200">
+                  <CornerAccent position="top-left" className="opacity-25" />
+                  <CornerAccent position="bottom-right" className="opacity-25" />
+                  <LeafSprig className="hidden sm:block absolute -right-3 -top-8 w-10 h-20 opacity-30 pointer-events-none" />
+                  <div className="relative flex items-center gap-4">
                     <img
                       src={logo}
                       alt="Sugaring by Steph"

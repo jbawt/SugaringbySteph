@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/Logo_transparent.png'
+import { FloralDivider } from './Botanicals'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -107,6 +108,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gold-200/50 text-center">
+          <FloralDivider className="mb-4" />
           <p className="text-sm text-bronze-500/60">
             &copy; {new Date().getFullYear()} Sugaring by Steph. All rights reserved.
           </p>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import FAQItem from '../components/FAQItem'
 import ScrollReveal from '../components/ScrollReveal'
+import { FloralDivider } from '../components/Botanicals'
 
 const faqs = [
   {
@@ -53,7 +54,7 @@ export default function FAQ() {
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Frequently Asked Questions</h1>
-          <div className="gold-divider mb-6" />
+          <FloralDivider className="mb-6" />
           <p className="text-lg text-bronze-500/80">
             Everything you need to know about sugaring
           </p>

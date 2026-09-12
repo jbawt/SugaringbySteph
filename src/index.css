@@ -42,6 +42,11 @@
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes botanical-sway {
+  0%, 100% { transform: rotate(-1.4deg); }
+  50% { transform: rotate(1.4deg); }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -261,6 +266,43 @@
     stroke-dashoffset: 36;
     animation: draw-check 560ms var(--ease-spa) 220ms forwards;
   }
+
+  .botanical-sway {
+    animation: botanical-sway 10s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  .botanical-corner-tl,
+  .botanical-corner-tr,
+  .botanical-corner-bl,
+  .botanical-corner-br {
+    position: absolute;
+    pointer-events: none;
+    line-height: 0;
+  }
+
+  .botanical-corner-tl {
+    top: 0.35rem;
+    left: 0.35rem;
+  }
+
+  .botanical-corner-tr {
+    top: 0.35rem;
+    right: 0.35rem;
+    transform: scaleX(-1);
+  }
+
+  .botanical-corner-bl {
+    bottom: 0.35rem;
+    left: 0.35rem;
+    transform: scaleY(-1);
+  }
+
+  .botanical-corner-br {
+    bottom: 0.35rem;
+    right: 0.35rem;
+    transform: scale(-1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -273,7 +315,8 @@
   .btn-primary:hover,
   .checkmark-wrap,
   .checkmark-circle,
-  .checkmark-check {
+  .checkmark-check,
+  .botanical-sway {
     animation: none !important;
   }
 

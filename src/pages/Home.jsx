@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/Logo_transparent.png'
 import ScrollReveal from '../components/ScrollReveal'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
+import { LeafSprig, FloralDivider, CornerAccent, HoneycombDots } from '../components/Botanicals'
 
 const benefits = [
   {
@@ -52,8 +53,12 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-pattern">
+      <section className="relative min-h-screen flex items-center justify-center bg-pattern overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cream-100 via-transparent to-cream-100" />
+        <LeafSprig className="botanical-sway hidden md:block absolute bottom-16 left-4 lg:left-12 w-24 h-52 text-gold-500 opacity-25 pointer-events-none" />
+        <LeafSprig flip className="botanical-sway hidden md:block absolute bottom-16 right-4 lg:right-12 w-24 h-52 text-gold-500 opacity-25 pointer-events-none" />
+        <HoneycombDots className="hidden md:block absolute top-28 left-16 w-10 h-7 opacity-20 pointer-events-none" />
+        <HoneycombDots className="hidden md:block absolute top-32 right-20 w-10 h-7 opacity-20 pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-32">
           {/* Logo */}
@@ -93,7 +98,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="section-heading">The Sweet Alternative to Waxing</h2>
-          <div className="gold-divider mb-8" />
+          <FloralDivider className="mb-8" />
           <p className="text-lg text-bronze-500/80 leading-relaxed">
             Sugaring is an ancient hair removal technique using a simple paste made from sugar, 
             lemon juice, and water. Unlike waxing, sugaring paste only adheres to hair—not 
@@ -108,6 +113,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <h2 className="section-heading">Our Services</h2>
+            <FloralDivider className="mb-6" />
             <p className="section-subheading">
               Professional sugaring services tailored to your needs
             </p>
@@ -118,8 +124,9 @@ export default function Home() {
               <Link 
                 key={service.name}
                 to={service.link}
-                className="card p-8 text-center group"
+                className="card relative p-8 text-center group"
               >
+                <CornerAccent position="top-right" className="opacity-20" />
                 {service.icon}
                 <h3 className="font-script text-3xl text-gold-600 mb-2">{service.name}</h3>
                 <p className="text-bronze-500 font-medium">{service.price}</p>
@@ -140,6 +147,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <h2 className="section-heading">Why Choose Sugaring?</h2>
+            <FloralDivider className="mb-6" />
             <p className="section-subheading">
               Discover the benefits of this ancient, natural hair removal method
             </p>

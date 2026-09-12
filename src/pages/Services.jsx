@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
 import ScrollReveal from '../components/ScrollReveal'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
+import { FloralDivider } from '../components/Botanicals'
 
 const services = {
   intimate: {
@@ -56,7 +57,7 @@ export default function Services() {
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="section-heading">Our Services</h1>
-          <div className="gold-divider mb-6" />
+          <FloralDivider className="mb-6" />
           <p className="text-lg text-bronze-500/80">
             Natural, gentle hair removal for every area. All services use organic sugar paste 
             made with just sugar, lemon, and water.
