@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/Logo_transparent.png'
 import ScrollReveal from '../components/ScrollReveal'
+import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 
 const benefits = [
   {
@@ -42,9 +43,9 @@ const benefits = [
 ]
 
 const featuredServices = [
-  { name: 'Intimate', price: 'From $50', link: '/services#intimate' },
-  { name: 'Body', price: 'From $25', link: '/services#body' },
-  { name: 'Face', price: 'From $15', link: '/services#face' },
+  { name: 'Intimate', price: 'From $50', link: '/services#intimate', icon: <IntimateIcon /> },
+  { name: 'Body', price: 'From $25', link: '/services#body', icon: <BodyIcon /> },
+  { name: 'Face', price: 'From $15', link: '/services#face', icon: <FaceIcon /> },
 ]
 
 export default function Home() {
@@ -119,11 +120,7 @@ export default function Home() {
                 to={service.link}
                 className="card p-8 text-center group"
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gold-100 flex items-center justify-center group-hover:bg-gold-200 transition-colors">
-                  <svg className="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </div>
+                {service.icon}
                 <h3 className="font-script text-3xl text-gold-600 mb-2">{service.name}</h3>
                 <p className="text-bronze-500 font-medium">{service.price}</p>
                 <span className="inline-flex items-center mt-4 text-gold-600 group-hover:gap-2 transition-all">

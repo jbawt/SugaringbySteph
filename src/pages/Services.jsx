@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
 import ScrollReveal from '../components/ScrollReveal'
+import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 
 const services = {
   intimate: {
@@ -67,6 +68,7 @@ export default function Services() {
       <section id="intimate" className="py-16 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
+            <IntimateIcon />
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-gold-300" />
               <h2 className="font-script text-4xl text-gold-600">{services.intimate.title}</h2>
@@ -89,6 +91,7 @@ export default function Services() {
       <section id="body" className="py-16 bg-cream-100 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
+            <BodyIcon />
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-gold-300" />
               <h2 className="font-script text-4xl text-gold-600">{services.body.title}</h2>
@@ -111,6 +114,7 @@ export default function Services() {
       <section id="face" className="py-16 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
+            <FaceIcon />
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="h-px w-12 bg-gold-300" />
               <h2 className="font-script text-4xl text-gold-600">{services.face.title}</h2>
