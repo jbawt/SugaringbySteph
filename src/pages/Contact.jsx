@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import logo from '../assets/Logo_transparent.png'
 
 const services = [
   'Brazilian',
@@ -255,14 +256,11 @@ export default function Contact() {
                 {/* Decorative Element */}
                 <div className="mt-12 p-6 bg-cream-100 rounded-2xl border border-gold-200">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
-                        <ellipse cx="12" cy="10" rx="5" ry="6" />
-                        <ellipse cx="12" cy="18" rx="3" ry="4" />
-                        <path d="M8 8 Q5 5 6 2 Q8 4 9 7" />
-                        <path d="M16 8 Q19 5 18 2 Q16 4 15 7" />
-                      </svg>
-                    </div>
+                    <img
+                      src={logo}
+                      alt="Sugaring by Steph"
+                      className="w-16 h-16 object-contain flex-shrink-0"
+                    />
                     <div>
                       <p className="font-script text-xl text-gold-600">Looking forward to</p>
                       <p className="font-script text-xl text-gold-600">hearing from you!</p>

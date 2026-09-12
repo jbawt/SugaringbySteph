@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from '../assets/Logo_transparent.png'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -18,14 +19,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gold-500 flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <ellipse cx="12" cy="10" rx="5" ry="6" />
-                <ellipse cx="12" cy="18" rx="3" ry="4" />
-                <path d="M8 8 Q5 5 6 2 Q8 4 9 7" />
-                <path d="M16 8 Q19 5 18 2 Q16 4 15 7" />
-              </svg>
-            </div>
+            <img
+              src={logo}
+              alt="Sugaring by Steph"
+              className="h-16 w-16 object-contain"
+            />
             <div className="hidden sm:block">
               <span className="font-script text-2xl text-gold-600">Sugaring</span>
               <span className="font-script text-xl text-bronze-500 ml-1">by Steph</span>

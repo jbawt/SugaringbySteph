@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logo from '../assets/Logo_transparent.png'
 
 const benefits = [
   {
@@ -54,14 +55,11 @@ export default function Home() {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-32">
           {/* Logo */}
-          <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-xl shadow-gold-500/20">
-            <svg className="w-20 h-20 text-white" viewBox="0 0 24 24" fill="currentColor">
-              <ellipse cx="12" cy="10" rx="5" ry="6" />
-              <ellipse cx="12" cy="18" rx="3" ry="4" />
-              <path d="M8 8 Q5 5 6 2 Q8 4 9 7" />
-              <path d="M16 8 Q19 5 18 2 Q16 4 15 7" />
-            </svg>
-          </div>
+          <img
+            src={logo}
+            alt="Sugaring by Steph"
+            className="w-56 h-56 md:w-72 md:h-72 mx-auto mb-8 object-contain"
+          />
           
           <h1 className="font-script text-5xl md:text-7xl text-gold-600 mb-4">
             Sugaring by Steph
