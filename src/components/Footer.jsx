@@ -126,6 +126,17 @@ export default function Footer() {
           <p className="text-sm text-bronze-500/60">
             &copy; {new Date().getFullYear()} Sugaring by Steph. All rights reserved.
           </p>
+          <p className="mt-2 text-xs text-bronze-500/50">
+            Powered by{' '}
+            <a
+              href="https://websidy.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-bronze-500/70 hover:text-gold-600 transition-colors"
+            >
+              Websidy
+            </a>
+          </p>
         </div>
       </div>
     </footer>
