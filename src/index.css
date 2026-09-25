@@ -5,6 +5,54 @@
 :root {
   --ease-spa: cubic-bezier(0.4, 0, 0.2, 1);
   --gold-glow: rgba(212, 175, 55, 0.32);
+  --color-surface: 255 255 255;
+
+  --color-gold-50: 251 249 243;
+  --color-gold-100: 245 240 230;
+  --color-gold-200: 237 228 211;
+  --color-gold-300: 224 212 184;
+  --color-gold-400: 212 196 157;
+  --color-gold-500: 212 175 55;
+  --color-gold-600: 201 162 39;
+  --color-gold-700: 139 105 20;
+  --color-gold-800: 107 82 16;
+  --color-gold-900: 74 57 11;
+
+  --color-cream-50: 255 253 251;
+  --color-cream-100: 250 248 245;
+  --color-cream-200: 245 240 230;
+  --color-cream-300: 237 228 211;
+
+  --color-bronze-500: 139 105 20;
+  --color-bronze-600: 107 82 16;
+  --color-bronze-700: 74 57 11;
+}
+
+.dark {
+  --gold-glow: rgba(212, 175, 55, 0.28);
+  --color-surface: 22 19 14;
+
+  --color-gold-50: 24 20 14;
+  --color-gold-100: 32 27 18;
+  --color-gold-200: 48 40 26;
+  --color-gold-300: 84 68 32;
+  --color-gold-400: 160 128 48;
+  --color-gold-500: 201 162 39;
+  --color-gold-600: 212 175 55;
+  --color-gold-700: 224 188 84;
+  --color-gold-800: 210 185 120;
+  --color-gold-900: 196 176 130;
+
+  --color-cream-50: 14 12 9;
+  --color-cream-100: 18 15 11;
+  --color-cream-200: 26 22 16;
+  --color-cream-300: 40 34 24;
+
+  --color-bronze-500: 176 160 128;
+  --color-bronze-600: 196 178 142;
+  --color-bronze-700: 214 198 162;
+
+  color-scheme: dark;
 }
 
 @keyframes gentle-bounce {
@@ -51,13 +99,42 @@
   html {
     scroll-behavior: smooth;
   }
+
+  html.dark,
+  html.dark body,
+  html.dark #root {
+    background-color: rgb(var(--color-cream-100));
+  }
   
   body {
     @apply font-sans text-bronze-500 bg-cream-100 antialiased;
+    transition: background-color 250ms var(--ease-spa), color 250ms var(--ease-spa);
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-script;
+  }
+
+  /* Kill leftover white / frost surfaces in dark mode */
+  .dark .bg-white,
+  .dark .bg-white\/10,
+  .dark .bg-white\/15,
+  .dark .bg-white\/20,
+  .dark .bg-white\/25,
+  .dark .bg-white\/30,
+  .dark .bg-white\/40,
+  .dark .bg-white\/50,
+  .dark .bg-white\/60,
+  .dark .bg-white\/70,
+  .dark .bg-white\/80,
+  .dark .bg-white\/90 {
+    background-color: rgb(var(--color-cream-200)) !important;
+  }
+
+  .dark .border-white\/40,
+  .dark .border-white\/30,
+  .dark .border-white\/50 {
+    border-color: rgb(var(--color-gold-300) / 0.35);
   }
 }
 
@@ -104,7 +181,7 @@
   .card {
     @apply rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
     background: 
-      linear-gradient(white, white) padding-box,
+      linear-gradient(rgb(var(--color-surface)), rgb(var(--color-surface))) padding-box,
       linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(139, 105, 20, 0.2)) border-box;
     border: 2px solid transparent;
   }
@@ -112,13 +189,19 @@
   .card:hover {
     @apply -translate-y-1;
     background: 
-      linear-gradient(white, white) padding-box,
+      linear-gradient(rgb(var(--color-surface)), rgb(var(--color-surface))) padding-box,
       linear-gradient(135deg, #D4AF37, #8B6914) border-box;
+  }
+
+  .dark .card:hover {
+    background: 
+      linear-gradient(rgb(var(--color-surface)), rgb(var(--color-surface))) padding-box,
+      linear-gradient(135deg, #D4AF37, #E0C86A) border-box;
   }
 
   .card-static:hover {
     transform: none;
-    border-color: #EDE4D3;
+    border-color: rgb(var(--color-gold-200));
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
   
@@ -163,6 +246,12 @@
     box-shadow: 0 4px 30px rgba(139, 105, 20, 0.05);
   }
 
+  .dark .navbar-glass {
+    background: rgba(14, 12, 9, 0.88);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
+  }
+
   .bento-intimate {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -186,7 +275,7 @@
   }
 
   .bento-featured {
-    @apply ring-2 ring-gold-500/30 bg-gradient-to-br from-white to-cream-100;
+    @apply ring-2 ring-gold-500/30 bg-gradient-to-br from-cream-50 to-cream-100;
   }
 
   @media (max-width: 767px) {
@@ -273,7 +362,7 @@
 
   .timeline-desc {
     font-size: 0.875rem;
-    color: rgba(139, 105, 20, 0.7);
+    color: rgb(var(--color-bronze-500) / 0.75);
   }
 
   @media (max-width: 768px) {
@@ -315,12 +404,21 @@
   }
 
   .mesh-gradient-hero {
-    background-color: #FAF8F5;
+    background-color: rgb(var(--color-cream-100));
     background-image:
       radial-gradient(ellipse 80% 50% at 20% 40%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
       radial-gradient(ellipse 60% 80% at 80% 20%, rgba(245, 240, 230, 0.9) 0%, transparent 50%),
       radial-gradient(ellipse 50% 60% at 70% 80%, rgba(139, 105, 20, 0.08) 0%, transparent 45%),
       radial-gradient(ellipse 70% 40% at 10% 90%, rgba(212, 175, 55, 0.1) 0%, transparent 40%);
+  }
+
+  .dark .mesh-gradient-hero {
+    background-color: rgb(var(--color-cream-100));
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26, 22, 16, 0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 60% at 70% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 45%),
+      radial-gradient(ellipse 70% 40% at 10% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
   }
 
   .page-enter {
@@ -508,9 +606,9 @@
     width: 3rem;
     overflow: hidden;
     border-radius: 9999px;
-    background: #fff;
-    border: 1px solid #EDE4D3;
-    color: #8B6914;
+    background: rgb(var(--color-surface));
+    border: 1px solid rgb(var(--color-gold-200));
+    color: rgb(var(--color-bronze-500));
     box-shadow: 0 8px 16px -8px rgba(75, 57, 11, 0.16),
                 0 2px 6px -2px rgba(75, 57, 11, 0.08);
     transition: width 280ms var(--ease-spa),
@@ -518,6 +616,11 @@
                 color 250ms var(--ease-spa),
                 border-color 250ms var(--ease-spa),
                 box-shadow 250ms var(--ease-spa);
+  }
+
+  .dark .social-dock-link {
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.45),
+                0 2px 6px -2px rgba(0, 0, 0, 0.3);
   }
 
   .social-dock-link:hover,

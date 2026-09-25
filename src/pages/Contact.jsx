@@ -87,7 +87,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-cream-50">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal stagger className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}

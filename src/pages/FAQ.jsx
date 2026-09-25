@@ -62,7 +62,7 @@ export default function FAQ() {
       </section>
 
       {/* FAQ List */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-cream-50">
         <ScrollReveal className="max-w-3xl mx-auto px-4">
           <div className="card card-static p-6 md:p-8">
             {faqs.map((faq, index) => (

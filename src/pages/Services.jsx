@@ -66,7 +66,7 @@ export default function Services() {
       </section>
 
       {/* Intimate Services */}
-      <section id="intimate" className="py-16 bg-white scroll-mt-24">
+      <section id="intimate" className="py-16 bg-cream-50 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <IntimateIcon />
@@ -129,7 +129,7 @@ export default function Services() {
       </section>
 
       {/* Face Services */}
-      <section id="face" className="py-16 bg-white scroll-mt-24">
+      <section id="face" className="py-16 bg-cream-50 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <FaceIcon />
@@ -209,7 +209,7 @@ export default function Services() {
           </p>
           <Link 
             to="/contact" 
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-gold-600 font-medium rounded-full shadow-lg hover:bg-cream-100 transform hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300"
           >
             Book Now
           </Link>

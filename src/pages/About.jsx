@@ -60,7 +60,7 @@ export default function About() {
       </section>
 
       {/* Main About Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-cream-50">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Photo */}
@@ -132,7 +132,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-cream-50">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <h2 className="section-heading">My Promise to You</h2>
@@ -164,7 +164,7 @@ export default function About() {
           </p>
           <Link 
             to="/contact" 
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-gold-600 font-medium rounded-full shadow-lg hover:bg-cream-100 transform hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300"
           >
             Get in Touch
           </Link>

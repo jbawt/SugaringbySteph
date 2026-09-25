@@ -32,7 +32,7 @@ function PageTransition({ children }) {
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-cream-100">
       <ScrollProgress />
       <ScrollToTop />
       <Navbar />

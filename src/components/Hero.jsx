@@ -67,7 +67,7 @@ export default function Hero({ className = '' }) {
       onMouseMove={handleMouseMove}
       className={`relative min-h-[100svh] overflow-hidden mesh-gradient-hero ${className}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-cream-100 via-cream-50/40 to-gold-100/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cream-100 via-cream-50/40 to-gold-100/40 dark:from-cream-100 dark:via-cream-50/50 dark:to-gold-100/20" />
       <div
         ref={glowRef}
         className="hero-parallax-glow pointer-events-none absolute inset-0 z-[1]"
@@ -85,7 +85,7 @@ export default function Hero({ className = '' }) {
         <div className="order-2 flex flex-col lg:order-1 lg:col-span-6 xl:col-span-5">
           <div className="order-2 lg:order-1">
             <div
-              className={`mb-6 inline-flex items-center gap-2 rounded-full border border-gold-300/60 bg-white/30 px-3.5 py-1.5 backdrop-blur-md ${reveal()}`}
+              className={`mb-6 inline-flex items-center gap-2 rounded-full border border-gold-300/60 bg-cream-50/70 px-3.5 py-1.5 backdrop-blur-md dark:border-gold-300/40 dark:bg-cream-200/70 ${reveal()}`}
               style={{ transitionDelay: entered ? '80ms' : '0ms' }}
             >
               <SmallFlower className="h-4 w-4" />
@@ -143,8 +143,8 @@ export default function Hero({ className = '' }) {
             style={{ transitionDelay: entered ? '220ms' : '0ms' }}
           >
             <div className="absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-gold-300/25 via-transparent to-gold-500/10 blur-2xl" />
-            <div className="hero-visual-card relative flex h-[14rem] w-[14rem] items-center justify-center rounded-full border border-gold-300/50 bg-white/20 shadow-[0_20px_60px_-24px_rgba(139,105,20,0.28)] backdrop-blur-sm sm:h-[22rem] sm:w-[22rem] lg:h-[28rem] lg:w-[28rem]">
-              <div className="flex h-[86%] w-[86%] items-center justify-center overflow-hidden rounded-full border border-gold-200/80 bg-cream-50/50">
+            <div className="hero-visual-card relative flex h-[14rem] w-[14rem] items-center justify-center rounded-full border border-gold-300/50 bg-cream-50/60 shadow-[0_20px_60px_-24px_rgba(139,105,20,0.28)] backdrop-blur-sm dark:border-gold-300/40 dark:bg-cream-200/50 dark:shadow-[0_20px_60px_-24px_rgba(0,0,0,0.55)] sm:h-[22rem] sm:w-[22rem] lg:h-[28rem] lg:w-[28rem]">
+              <div className="flex h-[86%] w-[86%] items-center justify-center overflow-hidden rounded-full border border-gold-200/80 bg-cream-100/80 dark:border-gold-200/50 dark:bg-cream-100/80">
                 <img
                   src={logo}
                   alt="Sugaring by Steph"
@@ -153,12 +153,12 @@ export default function Hero({ className = '' }) {
               </div>
             </div>
 
-            <div className="absolute -bottom-1 left-0 max-w-[8.5rem] rounded-xl border border-white/40 bg-white/25 px-2.5 py-1.5 shadow-[0_10px_30px_-16px_rgba(139,105,20,0.35)] backdrop-blur-md sm:-left-6 sm:bottom-10 sm:max-w-[11.5rem] sm:rounded-2xl sm:px-4 sm:py-3">
+            <div className="absolute -bottom-1 left-0 max-w-[8.5rem] rounded-xl border border-gold-300/40 bg-cream-50/80 px-2.5 py-1.5 shadow-[0_10px_30px_-16px_rgba(139,105,20,0.35)] backdrop-blur-md dark:border-gold-300/35 dark:bg-cream-200/85 sm:-left-6 sm:bottom-10 sm:max-w-[11.5rem] sm:rounded-2xl sm:px-4 sm:py-3">
               <p className="font-script text-sm leading-tight text-gold-700 sm:text-lg">100% Natural</p>
               <p className="mt-0.5 text-[10px] text-bronze-500/80 sm:text-xs">Sugar, lemon & water</p>
             </div>
 
-            <div className="absolute -right-1 -top-1 rounded-full border border-white/40 bg-white/25 px-2.5 py-1 shadow-md backdrop-blur-md sm:-right-4 sm:top-8 sm:px-3.5 sm:py-2">
+            <div className="absolute -right-1 -top-1 rounded-full border border-gold-300/40 bg-cream-50/80 px-2.5 py-1 shadow-md backdrop-blur-md dark:border-gold-300/35 dark:bg-cream-200/85 sm:-right-4 sm:top-8 sm:px-3.5 sm:py-2">
               <p className="text-[9px] font-medium uppercase tracking-[0.14em] text-bronze-600 sm:text-[11px] sm:tracking-[0.16em]">
                 4–6 week results
               </p>

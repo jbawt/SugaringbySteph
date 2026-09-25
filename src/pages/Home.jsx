@@ -75,7 +75,7 @@ export default function Home() {
       <Hero />
 
       {/* Intro Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-cream-50">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="section-heading">The Sweet Alternative to Waxing</h2>
           <FloralDivider className="mb-8" />
@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-cream-50">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <h2 className="section-heading">Why Choose Sugaring?</h2>
@@ -187,7 +187,7 @@ export default function Home() {
           <p className="text-xl text-white/90 mb-8">
             Book your appointment today and discover smoother, healthier skin
           </p>
-          <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-white text-gold-600 font-medium rounded-full shadow-lg hover:bg-cream-100 transform hover:-translate-y-0.5 transition-all duration-300">
+          <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300">
             Book Your Appointment
           </Link>
         </ScrollReveal>
