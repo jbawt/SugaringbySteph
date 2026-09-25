@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/Logo_transparent.png'
 import ScrollReveal from '../components/ScrollReveal'
 import { FloralDivider, SidebarBotanical, CornerAccent, LeafSprig } from '../components/Botanicals'
@@ -64,9 +65,9 @@ export default function Contact() {
             <p className="text-bronze-500/80 mb-8">
               Your message has been sent successfully. I'll get back to you within 24 hours.
             </p>
-            <a href="/" className="btn-primary">
+            <Link to="/" className="btn-primary">
               Back to Home
-            </a>
+            </Link>
           </div>
         </section>
       </div>
