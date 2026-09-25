@@ -43,6 +43,25 @@ const benefits = [
   },
 ]
 
+const expectSteps = [
+  {
+    title: 'Book',
+    description: 'Schedule your appointment online or by phone',
+  },
+  {
+    title: 'Prepare',
+    description: 'Exfoliate gently 24-48 hours before your visit',
+  },
+  {
+    title: 'Relax',
+    description: 'Enjoy a comfortable, professional session',
+  },
+  {
+    title: 'Glow',
+    description: 'Leave with smooth skin that lasts for weeks',
+  },
+]
+
 const featuredServices = [
   { name: 'Intimate', price: 'From $50', link: '/services#intimate', icon: <IntimateIcon /> },
   { name: 'Body', price: 'From $25', link: '/services#body', icon: <BodyIcon /> },
@@ -121,6 +140,28 @@ export default function Home() {
                 </div>
                 <h3 className="font-script text-xl text-gold-600 mb-2">{benefit.title}</h3>
                 <p className="text-sm text-bronze-500/70">{benefit.description}</p>
+              </div>
+            ))}
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* What to Expect */}
+      <section className="py-20 bg-cream-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <ScrollReveal>
+            <h2 className="section-heading">What to Expect</h2>
+            <FloralDivider className="mb-12" />
+          </ScrollReveal>
+
+          <ScrollReveal stagger className="timeline">
+            {expectSteps.map((step, index) => (
+              <div key={step.title} className="timeline-step">
+                <div className="timeline-circle">{index + 1}</div>
+                <div>
+                  <h3 className="timeline-title">{step.title}</h3>
+                  <p className="timeline-desc">{step.description}</p>
+                </div>
               </div>
             ))}
           </ScrollReveal>

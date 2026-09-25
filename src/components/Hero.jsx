@@ -65,7 +65,7 @@ export default function Hero({ className = '' }) {
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className={`relative min-h-[100svh] overflow-hidden bg-pattern ${className}`}
+      className={`relative min-h-[100svh] overflow-hidden mesh-gradient-hero ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-cream-100 via-cream-50/40 to-gold-100/40" />
       <div
@@ -141,11 +141,11 @@ export default function Hero({ className = '' }) {
           >
             <div className="absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-gold-300/25 via-transparent to-gold-500/10 blur-2xl" />
             <div className="hero-visual-card relative flex h-[20rem] w-[20rem] items-center justify-center rounded-full border border-gold-300/50 bg-white/20 shadow-[0_20px_60px_-24px_rgba(139,105,20,0.28)] backdrop-blur-sm sm:h-[24rem] sm:w-[24rem] lg:h-[28rem] lg:w-[28rem]">
-              <div className="flex h-[86%] w-[86%] items-center justify-center rounded-full border border-gold-200/80 bg-cream-50/50">
+              <div className="flex h-[86%] w-[86%] items-center justify-center overflow-hidden rounded-full border border-gold-200/80 bg-cream-50/50">
                 <img
                   src={logo}
                   alt="Sugaring by Steph"
-                  className="h-[88%] w-[88%] object-contain"
+                  className="hero-logo"
                 />
               </div>
             </div>

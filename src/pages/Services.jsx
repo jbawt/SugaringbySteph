@@ -80,9 +80,13 @@ export default function Services() {
             </p>
           </ScrollReveal>
           
-          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <ScrollReveal stagger className="bento-intimate">
             {services.intimate.items.map((service) => (
-              <ServiceCard key={service.name} {...service} />
+              <ServiceCard
+                key={service.name}
+                {...service}
+                className={service.name === 'Brazilian' ? 'bento-span-2-rows' : ''}
+              />
             ))}
           </ScrollReveal>
         </div>
@@ -103,9 +107,22 @@ export default function Services() {
             </p>
           </ScrollReveal>
           
-          <ScrollReveal stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.body.items.map((service) => (
-              <ServiceCard key={service.name} {...service} />
+          <ScrollReveal stagger className="bento-body">
+            {[
+              ...services.body.items.filter((service) => service.name === 'Full Arms'),
+              ...services.body.items.filter((service) => service.name !== 'Full Arms'),
+            ].map((service) => (
+              <ServiceCard
+                key={service.name}
+                {...service}
+                className={
+                  service.name === 'Full Arms'
+                    ? 'bento-span-2-rows bento-span-2-cols bento-featured'
+                    : service.name === 'Back' || service.name === 'Stomach'
+                      ? 'bento-span-2-cols'
+                      : ''
+                }
+              />
             ))}
           </ScrollReveal>
         </div>

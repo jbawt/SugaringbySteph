@@ -1,11 +1,11 @@
 import { CornerAccent } from './Botanicals'
 
-export default function ServiceCard({ name, price, description, featured = false }) {
+export default function ServiceCard({ name, price, description, featured = false, className = '' }) {
   return (
-    <div className={`card relative p-6 ${featured ? 'ring-2 ring-gold-500' : ''}`}>
+    <div className={`card relative flex h-full flex-col justify-center p-6 ${featured ? 'bento-featured' : ''} ${className}`.trim()}>
       <CornerAccent position="top-right" className="opacity-[0.16]" />
       {featured && (
-        <span className="inline-block px-3 py-1 text-xs font-medium text-gold-600 bg-gold-100 rounded-full mb-3">
+        <span className="mb-3 inline-block w-fit self-start rounded-full bg-gold-500 px-3 py-1 text-xs font-medium text-white">
           Most Popular
         </span>
       )}
