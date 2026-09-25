@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SocialDock from './components/SocialDock'
+import ScrollProgress from './components/ScrollProgress'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import About from './pages/About'
@@ -32,6 +33,7 @@ function PageTransition({ children }) {
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollProgress />
       <ScrollToTop />
       <Navbar />
       <SocialDock />
