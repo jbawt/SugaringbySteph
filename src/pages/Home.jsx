@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import ScrollReveal from '../components/ScrollReveal'
+import ReviewCarousel from '../components/ReviewCarousel'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider, CornerAccent } from '../components/Botanicals'
 
@@ -168,17 +169,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial */}
+      {/* Reviews */}
       <section className="py-20 bg-cream-200">
-        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <svg className="w-12 h-12 mx-auto mb-6 text-gold-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-          </svg>
-          <blockquote className="text-2xl md:text-3xl font-script text-bronze-700 mb-6 italic">
-            "I was nervous to try sugaring for the first time, but Steph made me feel so 
-            comfortable. The results are amazing and it's so much gentler than waxing!"
-          </blockquote>
-          <p className="text-gold-600 font-medium">— Happy Client</p>
+        <ScrollReveal className="mx-auto max-w-4xl px-4 text-center">
+          <h2 className="section-heading">Kind Words</h2>
+          <FloralDivider className="mb-10" />
+          <ReviewCarousel />
         </ScrollReveal>
       </section>
 

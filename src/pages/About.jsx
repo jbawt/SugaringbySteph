@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
+import profilePhoto from '../assets/StephProfilePhoto.jpeg'
 
 const values = [
   {
@@ -62,20 +63,15 @@ export default function About() {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Photo Placeholder */}
+            {/* Photo */}
             <div className="order-2 md:order-1 relative">
               <CurvedBranch className="hidden md:block absolute -bottom-4 -left-6 w-36 h-36 opacity-30 pointer-events-none" />
-              <div className="relative aspect-[4/5] rounded-2xl bg-cream-200 border-2 border-gold-200 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gold-100 flex items-center justify-center">
-                    <svg className="w-12 h-12 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <p className="text-bronze-500/60 text-sm">
-                    Photo coming soon
-                  </p>
-                </div>
+              <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-gold-200">
+                <img
+                  src={profilePhoto}
+                  alt="Steph, founder of Sugaring by Steph"
+                  className="h-full w-full object-cover object-center"
+                />
               </div>
             </div>
 

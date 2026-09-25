@@ -100,6 +100,20 @@ export default function Footer() {
                     <item.icon className="h-6 w-6" />
                   </a>
                 ))}
+                <Link
+                  to="/contact"
+                  className="text-bronze-500/80 hover:text-gold-600 transition-colors"
+                  aria-label="Contact"
+                >
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.8}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </Link>
               </div>
               <p className="text-sm text-bronze-500/60">@sugaringbysteph</p>
             </div>
