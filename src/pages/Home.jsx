@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo_transparent.png'
+import Hero from '../components/Hero'
 import ScrollReveal from '../components/ScrollReveal'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
-import { LeafSprig, FloralDivider, CornerAccent, HoneycombDots } from '../components/Botanicals'
+import { FloralDivider, CornerAccent } from '../components/Botanicals'
 
 const benefits = [
   {
@@ -52,47 +52,7 @@ const featuredServices = [
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-pattern overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cream-100 via-transparent to-cream-100" />
-        <LeafSprig className="botanical-sway hidden md:block absolute bottom-16 left-4 lg:left-12 w-24 h-52 text-gold-500 opacity-25 pointer-events-none" />
-        <LeafSprig flip className="botanical-sway hidden md:block absolute bottom-16 right-4 lg:right-12 w-24 h-52 text-gold-500 opacity-25 pointer-events-none" />
-        <HoneycombDots className="hidden md:block absolute top-28 left-16 w-10 h-7 opacity-20 pointer-events-none" />
-        <HoneycombDots className="hidden md:block absolute top-32 right-20 w-10 h-7 opacity-20 pointer-events-none" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-32">
-          {/* Logo */}
-          <img
-            src={logo}
-            alt="Sugaring by Steph"
-            className="w-56 h-56 md:w-72 md:h-72 mx-auto mb-8 object-contain"
-          />
-          
-          <h1 className="font-script text-5xl md:text-7xl text-gold-600 mb-4">
-            Sugaring by Steph
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-bronze-500 mb-8 tracking-wide">
-            Natural &bull; Gentle &bull; Organic Hair Removal
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/services" className="btn-primary">
-              View Our Services
-            </Link>
-            <Link to="/contact" className="btn-secondary">
-              Book Appointment
-            </Link>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <svg className="scroll-indicator w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
-      </section>
+      <Hero />
 
       {/* Intro Section */}
       <section className="py-20 bg-white">

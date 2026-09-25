@@ -272,6 +272,29 @@
     transform-origin: bottom center;
   }
 
+  .hero-parallax-glow {
+    background: radial-gradient(
+      26rem circle at var(--glow-x, 68%) var(--glow-y, 36%),
+      rgba(212, 175, 55, 0.2),
+      transparent 62%
+    );
+    transition: background 80ms linear;
+    will-change: background;
+  }
+
+  .hero-visual-card {
+    transition: transform 250ms var(--ease-spa),
+                box-shadow 250ms var(--ease-spa),
+                border-color 250ms var(--ease-spa);
+  }
+
+  .hero-visual-card:hover {
+    transform: translateY(-4px);
+    border-color: #E0D4B8;
+    box-shadow: 0 14px 30px -10px rgba(212, 175, 55, 0.28),
+                0 8px 16px -8px rgba(75, 57, 11, 0.08);
+  }
+
   .botanical-corner-tl,
   .botanical-corner-tr,
   .botanical-corner-bl,
@@ -303,6 +326,77 @@
     right: 0.35rem;
     transform: scale(-1);
   }
+
+  .social-dock {
+    position: fixed;
+    right: 1rem;
+    bottom: 1.5rem;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .social-dock-link {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    flex-shrink: 0;
+    height: 3rem;
+    width: 3rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: #fff;
+    border: 1px solid #EDE4D3;
+    color: #8B6914;
+    box-shadow: 0 8px 16px -8px rgba(75, 57, 11, 0.16),
+                0 2px 6px -2px rgba(75, 57, 11, 0.08);
+    transition: width 280ms var(--ease-spa),
+                background 250ms var(--ease-spa),
+                color 250ms var(--ease-spa),
+                border-color 250ms var(--ease-spa),
+                box-shadow 250ms var(--ease-spa);
+  }
+
+  .social-dock-link:hover,
+  .social-dock-link:focus,
+  .social-dock-link:focus-visible {
+    width: 10.25rem;
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(to left, #D4AF37, #C9A227);
+    box-shadow: 0 10px 24px -8px rgba(212, 175, 55, 0.45);
+    outline: none;
+  }
+
+  .social-dock-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-dock-label {
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding-left: 1.1rem;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 220ms var(--ease-spa) 40ms,
+                transform 280ms var(--ease-spa);
+  }
+
+  .social-dock-link:hover .social-dock-label,
+  .social-dock-link:focus .social-dock-label,
+  .social-dock-link:focus-visible .social-dock-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -325,5 +419,16 @@
     opacity: 1 !important;
     transform: none;
     animation: none !important;
+  }
+
+  .social-dock-link,
+  .social-dock-label {
+    transition: none !important;
+  }
+
+  .social-dock-link:hover .social-dock-label,
+  .social-dock-link:focus .social-dock-label,
+  .social-dock-link:focus-visible .social-dock-label {
+    transform: none;
   }
 }

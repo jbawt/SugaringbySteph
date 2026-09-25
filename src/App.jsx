@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import SocialDock from './components/SocialDock'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import About from './pages/About'
@@ -33,6 +34,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Navbar />
+      <SocialDock />
       <main className="flex-grow">
         <PageTransition>
           <Routes>
