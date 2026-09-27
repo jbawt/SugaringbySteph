@@ -7,6 +7,7 @@ import { FloralDivider, SidebarBotanical, CornerAccent, LeafSprig } from '../com
 const services = [
   'Brazilian',
   'Bikini',
+  'Vagacial',
   'Underarms',
   'Full Legs',
   'Half Legs',
@@ -16,7 +17,7 @@ const services = [
   'Stomach',
   'Upper Lip',
   'Chin',
-  'Other / Multiple Services'
+  'Other'
 ]
 
 export default function Contact() {
@@ -24,7 +25,7 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    service: '',
+    services: [],
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
@@ -33,6 +34,15 @@ export default function Contact() {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value
+    })
+  }
+
+  const handleServiceToggle = (service) => {
+    setFormState((prev) => {
+      const selected = prev.services.includes(service)
+        ? prev.services.filter((item) => item !== service)
+        : [...prev.services, service]
+      return { ...prev, services: selected }
     })
   }
 
@@ -156,23 +166,40 @@ export default function Contact() {
                     />
                   </div>
                   
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-bronze-700 mb-2">
-                      Service Interested In
-                    </label>
-                    <select
-                      id="service"
+                  <fieldset>
+                    <legend className="block text-sm font-medium text-bronze-700 mb-2">
+                      Services Interested In
+                    </legend>
+                    <p className="text-bronze-500/60 text-sm mb-3">Select all that apply</p>
+                    <input
+                      type="hidden"
                       name="service"
-                      value={formState.service}
-                      onChange={handleChange}
-                      className="input-field"
-                    >
-                      <option value="">Select a service...</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>{service}</option>
-                      ))}
-                    </select>
-                  </div>
+                      value={formState.services.join(', ')}
+                    />
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {services.map((service) => {
+                        const checked = formState.services.includes(service)
+                        return (
+                          <label
+                            key={service}
+                            className={`flex items-center gap-2 px-3 py-2.5 rounded-lg border cursor-pointer transition-colors duration-200 ${
+                              checked
+                                ? 'border-gold-500 bg-gold-100/60 text-bronze-700'
+                                : 'border-gold-200 bg-cream-50 text-bronze-500 hover:border-gold-400'
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => handleServiceToggle(service)}
+                              className="rounded border-gold-300 text-gold-600 focus:ring-gold-500 focus:ring-offset-0"
+                            />
+                            <span className="text-sm">{service}</span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </fieldset>
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-bronze-700 mb-2">
