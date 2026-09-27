@@ -2,7 +2,8 @@
   command = "npm run build"
   publish = "dist"
 
-# Handle client-side routing - redirect all routes to index.html
+# SPA fallback — static files (including /__forms.html) take precedence,
+# so Netlify Forms POST handling on the detection file still works.
 [[redirects]]
   from = "/*"
   to = "/index.html"

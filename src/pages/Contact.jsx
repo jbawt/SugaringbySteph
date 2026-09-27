@@ -39,6 +39,8 @@ export default function Contact() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   useEffect(() => {
     const fromQuery = searchParams.get('service') || searchParams.get('services')
@@ -73,18 +75,32 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const form = e.target
+    setSubmitError('')
+    setSubmitting(true)
+
+    const form = e.currentTarget
     const formData = new FormData(form)
-    
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    })
-      .then(() => setSubmitted(true))
-      .catch(() => alert('Error submitting form. Please try again or call directly.'))
+
+    try {
+      // Post to the static detection file so SPA redirects don't swallow the request.
+      const response = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Form submission failed (${response.status})`)
+      }
+
+      setSubmitted(true)
+    } catch {
+      setSubmitError('Something went wrong sending your request. Please try again or call directly.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -139,15 +155,21 @@ export default function Contact() {
                 id="appointment-form"
                 name="contact" 
                 method="POST" 
+                action="/__forms.html"
                 data-netlify="true"
-                netlify-honeypot="bot-field"
+                data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 className="card card-static p-8"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                <input
+                  type="hidden"
+                  name="subject"
+                  value="New appointment request — Sugaring by Steph"
+                />
                 <p className="hidden">
                   <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
+                    Don't fill this out if you're human: <input name="bot-field" tabIndex={-1} autoComplete="off" />
                   </label>
                 </p>
                 
@@ -249,9 +271,15 @@ export default function Contact() {
                       placeholder="Optional — share preferred days, times, or questions..."
                     />
                   </div>
+
+                  {submitError && (
+                    <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2" role="alert">
+                      {submitError}
+                    </p>
+                  )}
                   
-                  <button type="submit" className="btn-primary w-full">
-                    Request Appointment
+                  <button type="submit" className="btn-primary w-full" disabled={submitting}>
+                    {submitting ? 'Sending…' : 'Request Appointment'}
                   </button>
                 </div>
               </form>

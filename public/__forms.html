@@ -5,9 +5,14 @@
     <title>Form detection</title>
   </head>
   <body>
-    <!-- Static form for Netlify build-time detection (React SPA). -->
-    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <!--
+      Static form for Netlify build-time detection.
+      Required for React SPAs — the build parser cannot see JS-rendered forms.
+      Field names must match Contact.jsx submissions exactly.
+    -->
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="subject" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
