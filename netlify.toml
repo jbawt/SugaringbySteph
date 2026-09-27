@@ -2,8 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA fallback. Netlify serves real static files first, so these stay crawlable:
-# /robots.txt, /sitemap.xml, /opengraph.jpg, /__forms.html, /favicon.svg
+[build.environment]
+  # Keep Chromium cache inside the project for Netlify builds
+  PUPPETEER_CACHE_DIR = "./node_modules/.cache/puppeteer"
+
+# SPA fallback for unknown client routes.
+# Prerendered pages live as real files (e.g. /services/index.html) and are
+# served first. Static SEO files (robots.txt, sitemap.xml, opengraph.jpg) too.
 [[redirects]]
   from = "/*"
   to = "/index.html"

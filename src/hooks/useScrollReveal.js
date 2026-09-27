@@ -1,5 +1,12 @@
 import { useEffect, useRef } from 'react'
 
+function shouldShowImmediately() {
+  if (typeof window === 'undefined') return true
+  if (window.__PRERENDER__) return true
+  if (navigator.webdriver) return true
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
 export default function useScrollReveal({
   threshold = 0.12,
   rootMargin = '0px 0px -40px 0px',
@@ -12,8 +19,7 @@ export default function useScrollReveal({
 
     const show = () => element.classList.add('is-visible')
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+    if (shouldShowImmediately() || typeof IntersectionObserver === 'undefined') {
       show()
       return
     }

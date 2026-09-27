@@ -38,7 +38,7 @@ This site is a **client-rendered SPA**. That works for users, but search engines
 | Structured data (JSON-LD) | Done (`BeautySalon`, `FAQPage`, service offers) |
 | Twitter / social cards | Missing |
 | Google Business Profile | Not set up yet (client) |
-| Prerender / SSR for bots | Not configured |
+| Prerender / SSR for bots | Done (build-time Puppeteer → static HTML per route) |
 | FAQ content (good for AI answers) | Strong on `/faq` |
 | NAP (name, address, phone) on site | Partial (Woodland Crescent, Sylvan Lake + phone + email) |
 
@@ -96,9 +96,20 @@ JSON-LD lives in `src/data/structuredData.js` and is injected via `src/component
 
 Client-only React means some bots see a thin shell. Improve crawl reliability:
 
-- [ ] Add **prerendering** for marketing routes (e.g. [Netlify Prerender](https://docs.netlify.com/site-deploys/post-processing/prerendering/), or a Vite prerender plugin for `/`, `/services`, `/about`, `/faq`, `/contact`).
-- [ ] Or migrate critical pages to a hybrid/SSG setup later if traffic justifies it.
-- [ ] Ensure important copy (H1s, prices, location, FAQ answers) exists in the initial HTML after prerender — not only after JS hydration.
+- [x] **Build-time prerender** for `/`, `/services`, `/about`, `/faq`, `/contact` via `scripts/prerender.mjs` (Puppeteer + Vite preview).
+  - Output: `dist/index.html`, `dist/services/index.html`, etc. (Netlify serves these before the SPA fallback).
+  - Build command: `vite build && node scripts/prerender.mjs`
+  - ScrollReveal forces visible content during prerender (`__PRERENDER__` / `navigator.webdriver` / reduced motion).
+  - JSON-LD is rendered in the body so it survives prerender snapshots.
+- [x] Hybrid/SSG migration deferred — prerender covers current marketing routes.
+- [x] Important copy (H1s, prices, FAQ answers, location) is present in the prerendered HTML.
+
+**Post-deploy checks**
+
+1. `curl -s https://sugaringbysteph.ca/faq | head` should show FAQ HTML (not an empty `#root`).
+2. View source on `/services` should include prices in the initial HTML.
+3. Re-run Rich Results Test / Schema Validator (static HTML now includes content + JSON-LD).
+4. Netlify build needs Chromium for Puppeteer (`PUPPETEER_CACHE_DIR` is set in `netlify.toml`).
 
 #### 4. On-page content & semantics (medium)
 
