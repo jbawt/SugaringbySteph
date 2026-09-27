@@ -1,13 +1,10 @@
-import { useState } from 'react'
-
-export default function FAQItem({ question, answer, defaultOpen = false }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen)
-
+export default function FAQItem({ question, answer, isOpen, onToggle }) {
   return (
     <div className="border-b border-gold-200 last:border-b-0">
       <button
         className="w-full py-5 flex items-center justify-between text-left group"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onToggle}
+        aria-expanded={isOpen}
       >
         <span className="font-medium text-lg text-bronze-700 group-hover:text-gold-600 transition-colors pr-4">
           {question}

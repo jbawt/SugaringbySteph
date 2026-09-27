@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import FAQItem from '../components/FAQItem'
 import ScrollReveal from '../components/ScrollReveal'
@@ -7,7 +8,6 @@ const faqs = [
   {
     question: 'What is sugaring?',
     answer: 'Sugaring is an ancient hair removal technique that uses a paste made from just three natural ingredients: sugar, lemon juice, and water. The paste is applied to the skin and then flicked off, removing hair from the root. Unlike waxing, the paste only adheres to hair—not living skin cells—making it a gentler, more natural alternative.',
-    defaultOpen: true
   },
   {
     question: 'How is sugaring different from waxing?',
@@ -48,6 +48,12 @@ const faqs = [
 ]
 
 export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState(0)
+
+  const handleToggle = (index) => {
+    setOpenIndex((current) => (current === index ? null : index))
+  }
+
   return (
     <div className="pt-20">
       {/* Header */}
@@ -70,7 +76,8 @@ export default function FAQ() {
                 key={index}
                 question={faq.question}
                 answer={faq.answer}
-                defaultOpen={faq.defaultOpen}
+                isOpen={openIndex === index}
+                onToggle={() => handleToggle(index)}
               />
             ))}
           </div>
