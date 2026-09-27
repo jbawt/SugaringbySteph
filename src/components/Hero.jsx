@@ -98,7 +98,7 @@ export default function Hero({ className = '' }) {
             className={`font-script text-[3.15rem] leading-[0.95] text-gold-600 sm:text-6xl lg:text-[4.6rem] xl:text-[5.1rem] ${reveal()}`}
             style={{ transitionDelay: entered ? '180ms' : '0ms' }}
           >
-            <span className="sr-only">Sugaring by Steph — </span>
+            <span className="sr-only">Sugaring in Sylvan Lake by Sugaring by Steph. </span>
             <span className="bg-gradient-to-r from-bronze-700 via-gold-500 to-gold-600 bg-clip-text text-transparent">
               Smooth Skin,
             </span>
@@ -113,7 +113,7 @@ export default function Hero({ className = '' }) {
           >
             Natural. Gentle. Organic.
             <span className="mt-1 block text-base text-bronze-500/70 sm:text-lg">
-              The sweet alternative to waxing — refined care for smoother, healthier skin.
+              The sweet alternative to waxing in Sylvan Lake, refined care for smoother, healthier skin.
             </span>
           </p>
 
@@ -131,7 +131,7 @@ export default function Hero({ className = '' }) {
               to="/services"
               className="btn-secondary hover:scale-105 hover:shadow-lg"
             >
-              View Our Services
+              View sugaring prices & services
             </Link>
           </div>
 

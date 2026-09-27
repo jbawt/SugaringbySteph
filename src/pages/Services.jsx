@@ -19,11 +19,12 @@ export default function Services() {
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="section-heading">Our Services</h1>
+          <h1 className="section-heading">Sugaring Services in Sylvan Lake</h1>
           <FloralDivider className="mb-6" />
-          <p className="text-lg text-bronze-500/80">
-            Natural, gentle hair removal for every area. All services use organic sugar paste 
-            made with just sugar, lemon, and water.
+          <p className="text-lg text-bronze-500/80 max-w-3xl mx-auto">
+            Looking for Brazilian sugaring in Sylvan Lake, or a gentler sugaring vs waxing option
+            for natural hair removal near Red Deer and central Alberta? All services use organic
+            sugar paste made with just sugar, lemon, and water, kinder to skin than traditional waxing.
           </p>
         </ScrollReveal>
       </section>
@@ -39,7 +40,8 @@ export default function Services() {
               <div className="h-px w-12 bg-gold-300" />
             </div>
             <p className="text-center text-bronze-500/70 mb-10 max-w-2xl mx-auto">
-              {services.intimate.description}
+              {services.intimate.description}. Popular choices include Brazilian sugaring and bikini
+              line cleanup for clients across Sylvan Lake and nearby communities.
             </p>
           </ScrollReveal>
           
@@ -47,7 +49,10 @@ export default function Services() {
             {services.intimate.items.map((service) => (
               <ServiceCard
                 key={service.name}
-                {...service}
+                name={service.name}
+                price={service.price}
+                description={service.description}
+                featured={service.featured}
                 className={service.name === 'Brazilian' ? 'bento-span-2-rows' : ''}
               />
             ))}
@@ -84,7 +89,10 @@ export default function Services() {
             ].map((service) => (
               <ServiceCard
                 key={service.name}
-                {...service}
+                name={service.name}
+                price={service.price}
+                description={service.description}
+                featured={service.name === 'Full Arms'}
                 className={
                   service.name === 'Full Arms'
                     ? 'bento-span-2-rows bento-span-2-cols bento-featured'
@@ -115,7 +123,12 @@ export default function Services() {
           
           <ScrollReveal stagger className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto">
             {services.face.items.map((service) => (
-              <ServiceCard key={service.name} {...service} />
+              <ServiceCard
+                key={service.name}
+                name={service.name}
+                price={service.price}
+                description={service.description}
+              />
             ))}
           </ScrollReveal>
         </div>
@@ -159,7 +172,7 @@ export default function Services() {
                   </li>
                 </ul>
                 <Link to="/faq" className="text-gold-600 font-medium hover:text-gold-700 inline-flex items-center gap-1">
-                  Read Full FAQ
+                  Read the sugaring prep & aftercare FAQ
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -190,7 +203,7 @@ export default function Services() {
             to={CONTACT_PATH} 
             className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300"
           >
-            Request Appointment
+            Request a sugaring appointment
           </Link>
         </ScrollReveal>
       </section>

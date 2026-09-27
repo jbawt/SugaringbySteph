@@ -31,7 +31,7 @@ This site is a **client-rendered SPA**. That works for users, but search engines
 | Area | Status |
 |------|--------|
 | Global title + meta description | Present in `index.html` + per-route via `Seo` |
-| Open Graph basics | Complete (`og:image` → `/opengraph.jpg`) |
+| Open Graph basics | Complete (`og:image` → `/opengraph.jpg`, optimized 1200×630) |
 | Per-page titles/descriptions | Done (`src/components/Seo.jsx` + `src/data/seo.js`) |
 | Canonical URLs | Done (absolute `https://sugaringbysteph.ca/...`) |
 | `robots.txt` / `sitemap.xml` | Present in `public/` |
@@ -113,15 +113,12 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 
 #### 4. On-page content & semantics (medium)
 
-- [ ] Give every page a single clear **H1** that includes primary intent + location where natural (e.g. “Sugaring Services in Sylvan Lake”).
-- [ ] Expand Services copy slightly with searchable phrases clients actually type:
-  - “Brazilian sugaring Sylvan Lake”
-  - “natural hair removal near Red Deer / Sylvan Lake”
-  - “sugaring vs waxing”
-- [ ] Keep pricing visible and crawlable (already good on `/services`).
-- [ ] Fix decorative image `alt` text: service icons currently use empty `alt=""` — fine if decorative; ensure any meaningful images (logo, Steph photo) keep descriptive alts.
-- [ ] Add an optimized OG/share image and compress large assets (logo PNG is large — consider WebP + reasonable dimensions).
-- [ ] Internal linking: ensure FAQ ↔ Services ↔ Contact links use descriptive anchor text (“Request a Brazilian appointment” vs “click here”).
+- [x] Clear **H1** per page with intent + location where natural (Home sr-only + Services/FAQ/About/Contact headings).
+- [x] Services intro expanded with “Brazilian sugaring Sylvan Lake”, “near Red Deer”, and “sugaring vs waxing”.
+- [x] Pricing remains visible and crawlable on `/services` (unchanged structure).
+- [x] Decorative service icons: empty `alt` + `aria-hidden`; Steph photo alt updated with location.
+- [x] Optimized `public/opengraph.jpg` to 1200×630 (~124 KB); logo resized to 512×512 (~245 KB).
+- [x] Descriptive internal links: FAQ ↔ Services ↔ Contact; service cards use “Request {Service} appointment”.
 
 #### 5. Performance & Core Web Vitals (medium)
 

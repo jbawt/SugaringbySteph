@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom'
 import { CornerAccent } from './Botanicals'
 import { CONTACT_PATH } from '../data/contact'
 
-export default function ServiceCard({ name, price, description, featured = false, className = '' }) {
+export default function ServiceCard({
+  name,
+  price,
+  description,
+  featured = false,
+  className = '',
+}) {
   const requestPath = `${CONTACT_PATH}?service=${encodeURIComponent(name)}`
 
   return (
@@ -22,7 +28,7 @@ export default function ServiceCard({ name, price, description, featured = false
         to={requestPath}
         className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-gold-600 hover:text-gold-700 transition-colors"
       >
-        Request Appointment
+        Request {name} appointment
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>

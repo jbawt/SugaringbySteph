@@ -111,7 +111,7 @@ export default function Home() {
                 <p className="text-bronze-500 font-medium">{service.price}</p>
                 <p className="mt-1 text-sm text-bronze-500/60">{service.detail}</p>
                 <span className="inline-flex items-center mt-4 text-gold-600 group-hover:gap-2 transition-all">
-                  View pricing 
+                  View {service.name.toLowerCase()} sugaring prices
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -129,7 +129,12 @@ export default function Home() {
             <h2 className="section-heading">Why Sugaring?</h2>
             <FloralDivider className="mb-4" />
             <p className="section-subheading mb-10">
-              A natural paste of sugar, lemon, and water that grips hair—not skin—for a gentler, longer-lasting result.
+              Prefer sugaring vs waxing? A natural paste of sugar, lemon, and water grips hair, not skin,
+              for a gentler, longer-lasting result. Learn more in our{' '}
+              <Link to="/faq" className="text-gold-600 font-medium hover:text-gold-700">
+                sugaring FAQ
+              </Link>
+              .
             </p>
           </ScrollReveal>
           
@@ -179,7 +184,7 @@ export default function Home() {
             Request your appointment today and discover smoother, healthier skin
           </p>
           <Link to={CONTACT_PATH} className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300">
-            Request Appointment
+            Request a sugaring appointment
           </Link>
         </ScrollReveal>
       </section>

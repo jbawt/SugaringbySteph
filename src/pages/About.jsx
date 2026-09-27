@@ -59,7 +59,7 @@ export default function About() {
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="section-heading">Meet Steph</h1>
+          <h1 className="section-heading">Meet Steph in Sylvan Lake</h1>
           <FloralDivider />
         </ScrollReveal>
       </section>
@@ -77,7 +77,7 @@ export default function About() {
               <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-2xl border-2 border-gold-200 md:max-w-none">
                 <img
                   src={profilePhoto}
-                  alt="Steph, founder of Sugaring by Steph"
+                  alt="Steph, sugarist and founder of Sugaring by Steph in Sylvan Lake"
                   className="h-full w-full object-cover object-center"
                 />
               </div>
@@ -115,7 +115,7 @@ export default function About() {
               </p>
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-6">
                 <Link to={CONTACT_PATH} className="btn-primary inline-flex justify-center">
-                  Request Appointment
+                  Request a sugaring appointment
                 </Link>
                 <a
                   href={SUGARSMAC_PROFILE_URL}
@@ -204,7 +204,7 @@ export default function About() {
             to={CONTACT_PATH} 
             className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300"
           >
-            Request Appointment
+            Request a sugaring appointment
           </Link>
         </ScrollReveal>
       </section>

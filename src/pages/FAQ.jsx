@@ -23,10 +23,11 @@ export default function FAQ() {
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="section-heading">Frequently Asked Questions</h1>
+          <h1 className="section-heading">Sugaring FAQ for Sylvan Lake</h1>
           <FloralDivider className="mb-6" />
-          <p className="text-lg text-bronze-500/80">
-            Everything you need to know about sugaring
+          <p className="text-lg text-bronze-500/80 max-w-2xl mx-auto">
+            Everything you need to know about sugaring vs waxing, prep, aftercare, and booking
+            with Sugaring by Steph
           </p>
         </ScrollReveal>
       </section>
@@ -58,11 +59,21 @@ export default function FAQ() {
           </div>
           <h2 className="font-script text-3xl text-gold-600 mb-4">Still Have Questions?</h2>
           <p className="text-bronze-500/80 mb-8">
-            I'm happy to answer any questions you might have about sugaring or my services
+            I'm happy to answer any questions you might have about sugaring or my services.
+            You can also{' '}
+            <Link to="/services" className="text-gold-600 font-medium hover:text-gold-700">
+              view sugaring prices and services
+            </Link>
+            .
           </p>
-          <Link to="/contact" className="btn-primary">
-            Request Appointment
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link to="/contact" className="btn-primary">
+              Request a sugaring appointment
+            </Link>
+            <Link to="/services" className="btn-secondary">
+              Browse sugaring services
+            </Link>
+          </div>
         </ScrollReveal>
       </section>
     </div>

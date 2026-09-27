@@ -141,10 +141,19 @@ export default function Contact() {
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="section-heading">Request an Appointment</h1>
+          <h1 className="section-heading">Request a Sugaring Appointment in Sylvan Lake</h1>
           <FloralDivider className="mb-6" />
-          <p className="text-lg text-bronze-500/80">
-            Tell me what you’re looking for and your preferred times — or call directly.
+          <p className="text-lg text-bronze-500/80 max-w-2xl mx-auto">
+            Tell me which services you want and your preferred times, or call directly.
+            Not sure what you need?{' '}
+            <Link to="/services" className="text-gold-600 font-medium hover:text-gold-700">
+              Compare sugaring services and prices
+            </Link>
+            {' '}or{' '}
+            <Link to="/faq" className="text-gold-600 font-medium hover:text-gold-700">
+              read the sugaring FAQ
+            </Link>
+            .
           </p>
         </ScrollReveal>
       </section>
