@@ -11,7 +11,7 @@ const services = {
     items: [
       { 
         name: 'Brazilian', 
-        price: '$75 / $65', 
+        price: '$65 / $55', 
         description: 'First Visit / Maintenance',
         featured: true 
       },
@@ -34,7 +34,7 @@ const services = {
       { name: 'Underarms', price: '$25', description: 'Quick and effective' },
       { name: 'Full Legs', price: '$60', description: 'Toes to upper thigh' },
       { name: 'Half Legs', price: '$30', description: 'Upper or lower leg' },
-      { name: 'Full Arms', price: '$55', description: 'Fingers to shoulder' },
+      { name: 'Full Arms', price: '$45', description: 'Fingers to shoulder' },
       { name: 'Half Arms', price: '$30', description: 'Upper or lower arm' },
       { name: 'Back', price: '$45', description: 'Full back coverage' },
       { name: 'Stomach', price: '$35', description: 'Stomach and naval area' },
