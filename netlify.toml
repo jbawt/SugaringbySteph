@@ -4,7 +4,9 @@
 
 [build.environment]
   # Keep Chromium cache inside the project for Netlify builds
-  PUPPETEER_CACHE_DIR = "./node_modules/.cache/puppeteer"
+  PUPPETEER_CACHE_DIR = "/opt/build/cache/puppeteer"
+  PUPPETEER_SKIP_DOWNLOAD = "false"
+  PUPPETEER_SKIP_CHROME_DOWNLOAD = "false"
 
 # SPA fallback for unknown client routes.
 # Prerendered pages live as real files (e.g. /services/index.html) and are

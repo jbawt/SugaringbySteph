@@ -109,7 +109,7 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 1. `curl -s https://sugaringbysteph.ca/faq | head` should show FAQ HTML (not an empty `#root`).
 2. View source on `/services` should include prices in the initial HTML.
 3. Re-run Rich Results Test / Schema Validator (static HTML now includes content + JSON-LD).
-4. Netlify build needs Chromium for Puppeteer (`PUPPETEER_CACHE_DIR` is set in `netlify.toml`).
+4. Netlify build installs Chrome via `npx puppeteer browsers install chrome` before prerender (see `package.json` `build` script + `netlify.toml` Puppeteer env vars).
 
 #### 4. On-page content & semantics (medium)
 

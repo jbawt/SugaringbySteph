@@ -3,6 +3,7 @@
  * Writes static HTML into dist/ so Netlify serves real files to crawlers
  * (static files take precedence over the SPA /* → /index.html redirect).
  */
+import { execSync } from 'node:child_process'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -18,6 +19,35 @@ const ROUTES = ['/', '/services', '/about', '/faq', '/contact']
 function outputPathForRoute(route) {
   if (route === '/') return join(distDir, 'index.html')
   return join(distDir, route.replace(/^\//, ''), 'index.html')
+}
+
+function ensureChrome() {
+  console.log('Ensuring Puppeteer Chrome is installed…')
+  execSync('npx puppeteer browsers install chrome', {
+    cwd: root,
+    stdio: 'inherit',
+    env: {
+      ...process.env,
+      PUPPETEER_SKIP_DOWNLOAD: 'false',
+      PUPPETEER_SKIP_CHROME_DOWNLOAD: 'false',
+    },
+  })
+}
+
+async function launchBrowser() {
+  const launchOptions = {
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+  }
+
+  try {
+    return await puppeteer.launch(launchOptions)
+  } catch (error) {
+    console.warn('Puppeteer launch failed, installing Chrome and retrying…')
+    console.warn(error.message)
+    ensureChrome()
+    return puppeteer.launch(launchOptions)
+  }
 }
 
 async function waitForPageReady(page) {
@@ -57,10 +87,7 @@ async function main() {
   const baseUrl = 'http://127.0.0.1:4173'
   console.log(`Preview at ${baseUrl}`)
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-  })
+  const browser = await launchBrowser()
 
   try {
     for (const route of ROUTES) {
