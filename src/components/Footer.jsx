@@ -6,7 +6,7 @@ import {
   EMAIL,
   EMAIL_MAILTO,
   HOURS,
-  LOCATION_LINE,
+  LOCATION_FULL,
   PHONE_DISPLAY,
   PHONE_TEL,
 } from '../data/contact'
@@ -63,7 +63,7 @@ export default function Footer() {
               <br />
               The sweet alternative to waxing.
             </p>
-            <p className="mt-3 text-sm text-bronze-500/70">{LOCATION_LINE}</p>
+            <p className="mt-3 text-sm text-bronze-500/70">{LOCATION_FULL}</p>
           </div>
 
           {/* Quick Links */}

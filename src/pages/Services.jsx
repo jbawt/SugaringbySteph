@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
+import JsonLd from '../components/JsonLd'
 import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
@@ -7,57 +8,14 @@ import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider } from '../components/Botanicals'
 import { CONTACT_PATH } from '../data/contact'
 import { pageSeo } from '../data/seo'
-
-const services = {
-  intimate: {
-    title: 'Intimate',
-    description: 'Gentle and thorough hair removal for your most sensitive areas',
-    items: [
-      { 
-        name: 'Brazilian', 
-        price: '$65 / $55', 
-        description: 'First Visit / Maintenance',
-        featured: true 
-      },
-      { 
-        name: 'Bikini', 
-        price: '$50', 
-        description: 'Bikini line cleanup' 
-      },
-      { 
-        name: 'Vagacial', 
-        price: '+$20', 
-        description: 'Add-on treatment for ingrown prevention' 
-      },
-    ]
-  },
-  body: {
-    title: 'Body',
-    description: 'Smooth, hair-free skin from head to toe',
-    items: [
-      { name: 'Underarms', price: '$25', description: 'Quick and effective' },
-      { name: 'Full Legs', price: '$60', description: 'Toes to upper thigh' },
-      { name: 'Half Legs', price: '$30', description: 'Upper or lower leg' },
-      { name: 'Full Arms', price: '$45', description: 'Fingers to shoulder' },
-      { name: 'Half Arms', price: '$30', description: 'Upper or lower arm' },
-      { name: 'Back', price: '$45', description: 'Full back coverage' },
-      { name: 'Stomach', price: '$35', description: 'Stomach and naval area' },
-    ]
-  },
-  face: {
-    title: 'Face',
-    description: 'Precise facial hair removal for a flawless complexion',
-    items: [
-      { name: 'Upper Lip', price: '$15', description: 'Quick and precise' },
-      { name: 'Chin', price: '$15', description: 'Smooth, hair-free chin' },
-    ]
-  }
-}
+import { serviceCategories as services } from '../data/services'
+import { buildServicesPageSchema } from '../data/structuredData'
 
 export default function Services() {
   return (
     <div className="pt-20">
       <Seo {...pageSeo.services} />
+      <JsonLd data={buildServicesPageSchema()} />
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">

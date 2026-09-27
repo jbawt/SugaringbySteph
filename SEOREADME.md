@@ -35,7 +35,7 @@ This site is a **client-rendered SPA**. That works for users, but search engines
 | Per-page titles/descriptions | Done (`src/components/Seo.jsx` + `src/data/seo.js`) |
 | Canonical URLs | Done (absolute `https://sugaringbysteph.ca/...`) |
 | `robots.txt` / `sitemap.xml` | Present in `public/` |
-| Structured data (JSON-LD) | Missing |
+| Structured data (JSON-LD) | Done (`BeautySalon`, `FAQPage`, service offers) |
 | Twitter / social cards | Missing |
 | Google Business Profile | Not set up yet (client) |
 | Prerender / SSR for bots | Not configured |
@@ -56,8 +56,8 @@ Prioritize in roughly this order for the biggest SEO/AI impact.
 - [x] Add a `<link rel="canonical">` per route (`https://sugaringbysteph.ca/...`).
 - [x] Add Open Graph + Twitter Card tags per page, using `public/opengraph.jpg`.
 - [x] Document Netlify SPA fallback: static files take precedence (`netlify.toml` comments + cache headers for robots/sitemap/OG).
-- [ ] **Post-deploy (manual):** Submit sitemap in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters).
-- [ ] **Post-deploy (manual):** Verify domain ownership in Search Console; monitor Coverage / Experience issues.
+- [x] **Post-deploy (manual):** Submit sitemap in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters).
+- [x] **Post-deploy (manual):** Verify domain ownership in Search Console; monitor Coverage / Experience issues.
 
 **Post-deploy verification checklist**
 
@@ -69,19 +69,25 @@ Prioritize in roughly this order for the biggest SEO/AI impact.
 
 #### 2. Structured data for Google + AI (high)
 
-Add JSON-LD in `index.html` and/or per page. Minimum useful types for this business:
+JSON-LD lives in `src/data/structuredData.js` and is injected via `src/components/JsonLd.jsx`.
 
-- [ ] **`LocalBusiness`** (or `BeautySalon`) with:
-  - `name`, `url`, `telephone`, `email`
-  - `address` (street/area, Sylvan Lake, AB, Canada — match Google Business once live)
-  - `geo` (optional, once exact pin exists)
-  - `openingHoursSpecification` (Mon–Fri 09:00–17:00; note weekends may vary)
-  - `image` (logo + Steph photo URLs)
-  - `priceRange` (e.g. `$15–$65`)
-  - `areaServed` (Sylvan Lake and surrounding)
-- [ ] **`FAQPage`** on `/faq` mirroring the visible Q&A (helps rich results and AI citation).
-- [ ] **`Service`** items (or `hasOfferCatalog`) for Brazilian, Bikini, body, face services with prices where accurate.
-- [ ] Validate with [Google Rich Results Test](https://search.google.com/test/rich-results) and [Schema Markup Validator](https://validator.schema.org/).
+- [x] **`BeautySalon`** (LocalBusiness) sitewide in `App.jsx`:
+  - name, url, telephone, email
+  - address: Woodland Crescent, Sylvan Lake, AB T4S 1L9, CA (no house number, no geo)
+  - openingHoursSpecification Mon–Fri 09:00–17:00
+  - image/logo → `/opengraph.jpg`
+  - priceRange `$15-$65`, areaServed Sylvan Lake + Central Alberta
+  - `hasOfferCatalog` + `sameAs` (Instagram, Facebook, SugarSMAC)
+- [x] **`FAQPage`** on `/faq` from shared `src/data/faqs.js` (kept in sync with visible Q&A).
+- [x] **Service offers** on `/services` + catalog on the business entity (`src/data/services.js`).
+- [ ] **Post-deploy (manual):** Validate with [Google Rich Results Test](https://search.google.com/test/rich-results) and [Schema Markup Validator](https://validator.schema.org/).
+
+**Validate after deploy**
+
+1. Rich Results Test → `https://sugaringbysteph.ca/` (expect Local Business / related).
+2. Rich Results Test → `https://sugaringbysteph.ca/faq` (expect FAQ).
+3. Rich Results Test → `https://sugaringbysteph.ca/services` (offers/services).
+4. Optional: view page source / DevTools → search `application/ld+json`.
 
 #### 3. SPA / bot rendering (high for organic + AI)
 

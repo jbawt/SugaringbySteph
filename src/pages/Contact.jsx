@@ -9,7 +9,7 @@ import {
   EMAIL,
   EMAIL_MAILTO,
   HOURS,
-  LOCATION_LINE,
+  LOCATION_FULL,
   PHONE_DISPLAY,
   PHONE_TEL,
 } from '../data/contact'
@@ -334,7 +334,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium text-bronze-700 mb-1">Location</h3>
-                      <p className="text-bronze-500/80">{LOCATION_LINE}</p>
+                      <p className="text-bronze-500/80">{LOCATION_FULL}</p>
                       <p className="text-bronze-500/60 text-sm mt-1">By appointment only</p>
                     </div>
                   </div>

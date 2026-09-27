@@ -5,11 +5,13 @@ import Footer from './components/Footer'
 import SocialDock from './components/SocialDock'
 import MobileActionBar from './components/MobileActionBar'
 import ScrollProgress from './components/ScrollProgress'
+import JsonLd from './components/JsonLd'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import About from './pages/About'
 import FAQ from './pages/FAQ'
 import Contact from './pages/Contact'
+import { buildLocalBusinessSchema, buildWebsiteSchema } from './data/structuredData'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -34,6 +36,7 @@ function PageTransition({ children }) {
 export default function App() {
   return (
     <div className="has-mobile-action-bar min-h-screen flex flex-col bg-cream-100">
+      <JsonLd data={[buildLocalBusinessSchema(), buildWebsiteSchema()]} />
       <ScrollProgress />
       <ScrollToTop />
       <Navbar />
