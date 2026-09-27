@@ -30,11 +30,11 @@ This site is a **client-rendered SPA**. That works for users, but search engines
 
 | Area | Status |
 |------|--------|
-| Global title + meta description | Present in `index.html` (Sylvan Lake) |
-| Open Graph basics | Partial (`og:title`, `og:description`, `og:url` — **no `og:image`**) |
-| Per-page titles/descriptions | Missing (all routes share one `index.html` head) |
-| Canonical URLs | Missing |
-| `robots.txt` / `sitemap.xml` | Missing |
+| Global title + meta description | Present in `index.html` + per-route via `Seo` |
+| Open Graph basics | Complete (`og:image` → `/opengraph.jpg`) |
+| Per-page titles/descriptions | Done (`src/components/Seo.jsx` + `src/data/seo.js`) |
+| Canonical URLs | Done (absolute `https://sugaringbysteph.ca/...`) |
+| `robots.txt` / `sitemap.xml` | Present in `public/` |
 | Structured data (JSON-LD) | Missing |
 | Twitter / social cards | Missing |
 | Google Business Profile | Not set up yet (client) |
@@ -50,30 +50,22 @@ Prioritize in roughly this order for the biggest SEO/AI impact.
 
 #### 1. Technical crawl & indexability (high)
 
-- [ ] Add `public/robots.txt` allowing crawling and pointing to the sitemap:
-  ```
-  User-agent: *
-  Allow: /
+- [x] Add `public/robots.txt` allowing crawling and pointing to the sitemap (`Disallow: /__forms.html`).
+- [x] Add `public/sitemap.xml` with `/`, `/services`, `/about`, `/faq`, `/contact`.
+- [x] Add unique **per-route** `<title>` and meta description via `react-helmet-async` (`src/components/Seo.jsx`, `src/data/seo.js`).
+- [x] Add a `<link rel="canonical">` per route (`https://sugaringbysteph.ca/...`).
+- [x] Add Open Graph + Twitter Card tags per page, using `public/opengraph.jpg`.
+- [x] Document Netlify SPA fallback: static files take precedence (`netlify.toml` comments + cache headers for robots/sitemap/OG).
+- [ ] **Post-deploy (manual):** Submit sitemap in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters).
+- [ ] **Post-deploy (manual):** Verify domain ownership in Search Console; monitor Coverage / Experience issues.
 
-  Sitemap: https://sugaringbysteph.ca/sitemap.xml
-  ```
-- [ ] Add `public/sitemap.xml` with all public routes:
-  - `/`
-  - `/services`
-  - `/about`
-  - `/faq`
-  - `/contact`
-- [ ] Add unique **per-route** `<title>` and meta description (e.g. `react-helmet-async` or a small head manager in each page). Suggested patterns:
-  - Home: `Sugaring in Sylvan Lake | Sugaring by Steph`
-  - Services: `Sugaring Prices & Services | Sylvan Lake`
-  - About: `Meet Steph | Sugaring by Steph`
-  - FAQ: `Sugaring FAQ | Prep, Aftercare & More`
-  - Contact: `Request an Appointment | Sugaring by Steph`
-- [ ] Add a `<link rel="canonical">` per route (absolute `https://sugaringbysteph.ca/...`).
-- [ ] Add Open Graph + Twitter Card tags per page, including a real **`og:image`** (1200×630 brand image in `public/`).
-- [ ] Confirm Netlify SPA fallback (`/* → /index.html` 200) does not block static files (`robots.txt`, `sitemap.xml`, `__forms.html`). Static files already take precedence; re-check after deploy.
-- [ ] Submit sitemap in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters).
-- [ ] Verify domain ownership in Search Console; monitor Coverage / Experience issues.
+**Post-deploy verification checklist**
+
+1. Open `https://sugaringbysteph.ca/robots.txt` and `https://sugaringbysteph.ca/sitemap.xml` (must be XML/text, not the React app).
+2. Open `https://sugaringbysteph.ca/opengraph.jpg` (image loads).
+3. In Search Console → Sitemaps → submit `https://sugaringbysteph.ca/sitemap.xml`.
+4. In Bing Webmaster Tools → Sitemaps → submit the same URL.
+5. Spot-check a shared link with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [opengraph.xyz](https://www.opengraph.xyz/).
 
 #### 2. Structured data for Google + AI (high)
 

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
 import profilePhoto from '../assets/StephProfilePhoto.jpeg'
 import { CONTACT_PATH, SUGARSMAC_PROFILE_URL } from '../data/contact'
+import { pageSeo } from '../data/seo'
 
 const values = [
   {
@@ -53,6 +55,7 @@ const whySugaring = [
 export default function About() {
   return (
     <div className="pt-20">
+      <Seo {...pageSeo.about} />
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">

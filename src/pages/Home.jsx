@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
+import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider, CornerAccent } from '../components/Botanicals'
 import { CONTACT_PATH } from '../data/contact'
+import { pageSeo } from '../data/seo'
 
 const benefits = [
   {
@@ -73,6 +75,7 @@ const featuredServices = [
 export default function Home() {
   return (
     <div>
+      <Seo {...pageSeo.home} />
       <Hero />
 
       {/* Reviews — early social proof */}

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import FAQItem from '../components/FAQItem'
+import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import { FloralDivider } from '../components/Botanicals'
+import { pageSeo } from '../data/seo'
 
 const faqs = [
   {
@@ -64,6 +66,7 @@ export default function FAQ() {
 
   return (
     <div className="pt-20">
+      <Seo {...pageSeo.faq} />
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">

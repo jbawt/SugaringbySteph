@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import logo from '../assets/Logo_transparent.png'
+import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { FloralDivider, SidebarBotanical, CornerAccent, LeafSprig } from '../components/Botanicals'
@@ -12,6 +13,7 @@ import {
   PHONE_DISPLAY,
   PHONE_TEL,
 } from '../data/contact'
+import { pageSeo } from '../data/seo'
 
 const services = [
   'Brazilian',
@@ -106,6 +108,7 @@ export default function Contact() {
   if (submitted) {
     return (
       <div className="pt-20">
+        <Seo {...pageSeo.contact} />
         <section className="py-32 bg-cream-100">
           <div className="page-enter max-w-xl mx-auto px-4 text-center">
             <div className="checkmark-wrap w-20 h-20 mx-auto mb-6 rounded-full bg-gold-100 flex items-center justify-center">
@@ -134,6 +137,7 @@ export default function Contact() {
 
   return (
     <div className="pt-20">
+      <Seo {...pageSeo.contact} />
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">

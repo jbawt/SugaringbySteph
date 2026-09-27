@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
+import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider } from '../components/Botanicals'
 import { CONTACT_PATH } from '../data/contact'
+import { pageSeo } from '../data/seo'
 
 const services = {
   intimate: {
@@ -55,6 +57,7 @@ const services = {
 export default function Services() {
   return (
     <div className="pt-20">
+      <Seo {...pageSeo.services} />
       {/* Header */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
