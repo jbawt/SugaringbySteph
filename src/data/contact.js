@@ -5,3 +5,5 @@ export const EMAIL_MAILTO = 'mailto:hello@sugaringbysteph.ca'
 export const LOCATION_LINE = 'Woodland Crescent, Sylvan Lake'
 export const HOURS = 'Mon–Fri 9am–5pm · Weekend hours may vary'
 export const CONTACT_PATH = '/contact'
+export const SUGARSMAC_PROFILE_URL =
+  'https://sugarsmac.ca/stockist/sugaring-by-steph/'

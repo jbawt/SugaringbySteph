@@ -3,7 +3,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
 import profilePhoto from '../assets/StephProfilePhoto.jpeg'
-import { CONTACT_PATH } from '../data/contact'
+import { CONTACT_PATH, SUGARSMAC_PROFILE_URL } from '../data/contact'
 
 const values = [
   {
@@ -93,17 +93,39 @@ export default function About() {
                 with others.
               </p>
               <p>
-                After completing professional training and certification in the art of 
-                sugaring, I started Sugaring by Steph to offer a more natural, gentle 
-                alternative to traditional hair removal methods.
+                After completing professional training and certification through{' '}
+                <a
+                  href={SUGARSMAC_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold-600 font-medium hover:text-gold-700 underline underline-offset-2"
+                >
+                  SugarSMAC
+                </a>
+                , I started Sugaring by Steph to offer a more natural, gentle
+                alternative to traditional hair removal methods. I continue to use
+                SugarSMAC products in my practice.
               </p>
               <p>
                 Whether you're new to sugaring or a longtime fan, I'm here to provide 
                 you with a comfortable, professional experience and results you'll love.
               </p>
-              <Link to={CONTACT_PATH} className="btn-primary mt-6 inline-flex">
-                Request Appointment
-              </Link>
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-6">
+                <Link to={CONTACT_PATH} className="btn-primary inline-flex justify-center">
+                  Request Appointment
+                </Link>
+                <a
+                  href={SUGARSMAC_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary inline-flex justify-center items-center gap-2"
+                >
+                  View SugarSMAC Profile
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </ScrollReveal>
         </div>
