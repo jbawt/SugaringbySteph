@@ -79,15 +79,18 @@ JSON-LD lives in `src/data/structuredData.js` and is injected via `src/component
   - priceRange `$15-$65`, areaServed Sylvan Lake + Central Alberta
   - `hasOfferCatalog` + `sameAs` (Instagram, Facebook, SugarSMAC)
 - [x] **`FAQPage`** on `/faq` from shared `src/data/faqs.js` (kept in sync with visible Q&A).
+  - **Note:** Google generally does **not** show FAQ rich results for beauty/local businesses (eligibility is limited). Markup remains useful for AI and [Schema Markup Validator](https://validator.schema.org/).
 - [x] **Service offers** on `/services` + catalog on the business entity (`src/data/services.js`).
-- [ ] **Post-deploy (manual):** Validate with [Google Rich Results Test](https://search.google.com/test/rich-results) and [Schema Markup Validator](https://validator.schema.org/).
+  - **Note:** `OfferCatalog` is not a separate Google rich-result type. Offers nest under **Local businesses** in Rich Results Test (expand that row).
+- [x] **Post-deploy (manual):** Rich Results Test shows Local Business + Organization (expected). Confirm FAQPage/OfferCatalog with Schema Markup Validator or View Page Source → `application/ld+json`.
 
 **Validate after deploy**
 
-1. Rich Results Test → `https://sugaringbysteph.ca/` (expect Local Business / related).
-2. Rich Results Test → `https://sugaringbysteph.ca/faq` (expect FAQ).
-3. Rich Results Test → `https://sugaringbysteph.ca/services` (offers/services).
-4. Optional: view page source / DevTools → search `application/ld+json`.
+1. Rich Results Test → any URL: expect **Local businesses** + **Organization** (sitewide `BeautySalon` / `WebSite`).
+2. Expand **Local businesses** in the test UI to inspect nested offers / details.
+3. [Schema Markup Validator](https://validator.schema.org/) → paste `/faq` HTML or URL: expect **FAQPage**.
+4. Same validator on `/services`: expect **OfferCatalog** / offers.
+5. In browser DevTools on `/faq` and `/services` → Elements → search `FAQPage` / `OfferCatalog`.
 
 #### 3. SPA / bot rendering (high for organic + AI)
 
