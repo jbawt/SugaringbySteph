@@ -3,7 +3,7 @@ import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
-import profilePhoto from '../assets/StephProfilePhoto.jpeg'
+import profilePhoto from '../assets/StephProfilePhoto.webp'
 import { CONTACT_PATH, SUGARSMAC_PROFILE_URL } from '../data/contact'
 import { pageSeo } from '../data/seo'
 
@@ -78,6 +78,11 @@ export default function About() {
                 <img
                   src={profilePhoto}
                   alt="Steph, sugarist and founder of Sugaring by Steph in Sylvan Lake"
+                  width={800}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="h-full w-full object-cover object-center"
                 />
               </div>

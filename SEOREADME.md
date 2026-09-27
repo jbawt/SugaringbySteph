@@ -122,10 +122,11 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 
 #### 5. Performance & Core Web Vitals (medium)
 
-- [ ] Compress/convert hero and logo assets; lazy-load below-fold images.
-- [ ] Preload critical fonts or self-host with `font-display: swap` (already using Google Fonts — consider subsetting).
-- [ ] Measure with Lighthouse / PageSpeed Insights on mobile; fix LCP/CLS issues.
-- [ ] Keep the sticky mobile action bar from covering focusable content (padding already applied — re-test after design changes).
+- [x] Compress/convert assets to WebP: logo (~57 KB), service icons (~2 KB each), About photo (~39 KB); width/height + `decoding` on images; lazy-load footer/contact/icons; hero/nav logo `fetchPriority="high"`.
+- [x] Slim Google Fonts to used weights (Cormorant 400/600/italic400, Lato 400/500/600) + `display=swap` + stylesheet preload.
+- [x] Production build: sourcemaps off by default (`SOURCEMAP=true` to enable); React vendor chunk split.
+- [x] Sticky mobile action bar: `has-mobile-action-bar` padding + `html { scroll-padding-bottom }` so anchors/focus stay clear of Call / Request Appointment.
+- [ ] Measure with Lighthouse / PageSpeed Insights on mobile after deploy; chase any remaining LCP/CLS.
 
 #### 6. AI search / answer-engine optimization (high)
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import logo from '../assets/Logo_transparent.png'
+import logo from '../assets/Logo_transparent.webp'
 import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
@@ -406,6 +406,10 @@ export default function Contact() {
                     <img
                       src={logo}
                       alt="Sugaring by Steph"
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      decoding="async"
                       className="w-16 h-16 object-contain flex-shrink-0"
                     />
                     <div>

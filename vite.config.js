@@ -22,6 +22,16 @@ export default defineConfig({
   plugins: [react(), githubPagesSpaFallback()],
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    // Sourcemaps bloat deploys; enable locally with `SOURCEMAP=true npm run build:vite`
+    sourcemap: process.env.SOURCEMAP === 'true',
+    cssCodeSplit: true,
+    assetsInlineLimit: 4096,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
   },
 })

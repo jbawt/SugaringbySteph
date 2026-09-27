@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo_transparent.png'
+import logo from '../assets/Logo_transparent.webp'
 import { LeafSprig, HoneycombDots, SmallFlower } from './Botanicals'
 import { CONTACT_PATH, LOCATION_LINE } from '../data/contact'
 
@@ -155,6 +155,10 @@ export default function Hero({ className = '' }) {
                 <img
                   src={logo}
                   alt="Sugaring by Steph"
+                  width={400}
+                  height={400}
+                  decoding="async"
+                  fetchPriority="high"
                   className="hero-logo"
                 />
               </div>

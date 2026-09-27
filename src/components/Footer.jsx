@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo_transparent.png'
+import logo from '../assets/Logo_transparent.webp'
 import { FloralDivider } from './Botanicals'
 import {
   CONTACT_PATH,
@@ -51,6 +51,10 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="Sugaring by Steph"
+                width={56}
+                height={56}
+                loading="lazy"
+                decoding="async"
                 className="h-14 w-14 object-contain"
               />
               <div>
