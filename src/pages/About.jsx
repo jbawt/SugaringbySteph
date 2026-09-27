@@ -64,11 +64,14 @@ export default function About() {
       {/* Main About Section */}
       <section className="py-16 bg-cream-50">
         <div className="max-w-6xl mx-auto px-4">
-          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Photo */}
-            <div className="order-2 md:order-1 relative">
+          <ScrollReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-4 items-center">
+            <h2 className="order-1 font-script text-4xl text-gold-600 text-center md:col-start-2 md:row-start-1 md:self-end md:text-left md:mb-2">
+              Hi, I'm Steph!
+            </h2>
+
+            <div className="order-2 relative md:col-start-1 md:row-start-1 md:row-span-2">
               <CurvedBranch className="hidden md:block absolute -bottom-4 -left-6 w-36 h-36 opacity-30 pointer-events-none" />
-              <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-gold-200">
+              <div className="relative mx-auto aspect-square max-w-md overflow-hidden rounded-2xl border-2 border-gold-200 md:max-w-none">
                 <img
                   src={profilePhoto}
                   alt="Steph, founder of Sugaring by Steph"
@@ -77,34 +80,30 @@ export default function About() {
               </div>
             </div>
 
-            {/* Bio */}
-            <div className="order-1 md:order-2">
-              <h2 className="font-script text-4xl text-gold-600 mb-6">Hi, I'm Steph!</h2>
-              <div className="space-y-4 text-bronze-500/80 leading-relaxed">
-                <p>
-                  Welcome to Sugaring by Steph! I'm passionate about helping people feel 
-                  confident and comfortable in their own skin through natural, gentle hair 
-                  removal.
-                </p>
-                <p>
-                  I discovered sugaring after years of dealing with the irritation and 
-                  discomfort of traditional waxing. Once I experienced the difference that 
-                  sugaring made for my own skin, I knew I had to share this amazing technique 
-                  with others.
-                </p>
-                <p>
-                  After completing professional training and certification in the art of 
-                  sugaring, I started Sugaring by Steph to offer a more natural, gentle 
-                  alternative to traditional hair removal methods.
-                </p>
-                <p>
-                  Whether you're new to sugaring or a longtime fan, I'm here to provide 
-                  you with a comfortable, professional experience and results you'll love.
-                </p>
-                <Link to={CONTACT_PATH} className="btn-primary mt-6 inline-flex">
-                  Request Appointment
-                </Link>
-              </div>
+            <div className="order-3 space-y-4 text-bronze-500/80 leading-relaxed md:col-start-2 md:row-start-2 md:self-start">
+              <p>
+                Welcome to Sugaring by Steph! I'm passionate about helping people feel 
+                confident and comfortable in their own skin through natural, gentle hair 
+                removal.
+              </p>
+              <p>
+                I discovered sugaring after years of dealing with the irritation and 
+                discomfort of traditional waxing. Once I experienced the difference that 
+                sugaring made for my own skin, I knew I had to share this amazing technique 
+                with others.
+              </p>
+              <p>
+                After completing professional training and certification in the art of 
+                sugaring, I started Sugaring by Steph to offer a more natural, gentle 
+                alternative to traditional hair removal methods.
+              </p>
+              <p>
+                Whether you're new to sugaring or a longtime fan, I'm here to provide 
+                you with a comfortable, professional experience and results you'll love.
+              </p>
+              <Link to={CONTACT_PATH} className="btn-primary mt-6 inline-flex">
+                Request Appointment
+              </Link>
             </div>
           </ScrollReveal>
         </div>
