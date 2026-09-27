@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/Logo_transparent.png'
 import { LeafSprig, HoneycombDots, SmallFlower } from './Botanicals'
+import { CONTACT_PATH, LOCATION_LINE } from '../data/contact'
 
 /**
  * @param {{ className?: string }} props
@@ -83,58 +84,64 @@ export default function Hero({ className = '' }) {
 
       <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-center gap-6 px-4 pb-16 pt-24 sm:gap-10 sm:px-6 sm:pb-20 sm:pt-28 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:pt-24">
         <div className="order-2 flex flex-col lg:order-1 lg:col-span-6 xl:col-span-5">
-          <div className="order-2 lg:order-1">
-            <div
-              className={`mb-6 inline-flex items-center gap-2 rounded-full border border-gold-300/60 bg-cream-50/70 px-3.5 py-1.5 backdrop-blur-md dark:border-gold-300/40 dark:bg-cream-200/70 ${reveal()}`}
-              style={{ transitionDelay: entered ? '80ms' : '0ms' }}
-            >
-              <SmallFlower className="h-4 w-4" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-bronze-600">
-                Natural Hair Removal
-              </span>
-            </div>
-
-            <h1
-              className={`font-script text-[3.15rem] leading-[0.95] text-gold-600 sm:text-6xl lg:text-[4.6rem] xl:text-[5.1rem] ${reveal()}`}
-              style={{ transitionDelay: entered ? '180ms' : '0ms' }}
-            >
-              <span className="sr-only">Sugaring by Steph — </span>
-              <span className="bg-gradient-to-r from-bronze-700 via-gold-500 to-gold-600 bg-clip-text text-transparent">
-                Smooth Skin,
-              </span>
-              <span className="mt-1 block bg-gradient-to-r from-gold-600 via-gold-500 to-bronze-500 bg-clip-text text-transparent">
-                Naturally
-              </span>
-            </h1>
-
-            <p
-              className={`mt-6 max-w-md text-lg leading-relaxed text-bronze-500/85 sm:text-xl ${reveal()}`}
-              style={{ transitionDelay: entered ? '320ms' : '0ms' }}
-            >
-              Natural. Gentle. Organic.
-              <span className="mt-1 block text-base text-bronze-500/70 sm:text-lg">
-                The sweet alternative to waxing — refined care for smoother, healthier skin.
-              </span>
-            </p>
+          <div
+            className={`mb-6 inline-flex items-center gap-2 rounded-full border border-gold-300/60 bg-cream-50/70 px-3.5 py-1.5 backdrop-blur-md dark:border-gold-300/40 dark:bg-cream-200/70 ${reveal()}`}
+            style={{ transitionDelay: entered ? '80ms' : '0ms' }}
+          >
+            <SmallFlower className="h-4 w-4" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-bronze-600">
+              {LOCATION_LINE}
+            </span>
           </div>
 
+          <h1
+            className={`font-script text-[3.15rem] leading-[0.95] text-gold-600 sm:text-6xl lg:text-[4.6rem] xl:text-[5.1rem] ${reveal()}`}
+            style={{ transitionDelay: entered ? '180ms' : '0ms' }}
+          >
+            <span className="sr-only">Sugaring by Steph — </span>
+            <span className="bg-gradient-to-r from-bronze-700 via-gold-500 to-gold-600 bg-clip-text text-transparent">
+              Smooth Skin,
+            </span>
+            <span className="mt-1 block bg-gradient-to-r from-gold-600 via-gold-500 to-bronze-500 bg-clip-text text-transparent">
+              Naturally
+            </span>
+          </h1>
+
+          <p
+            className={`mt-6 max-w-md text-lg leading-relaxed text-bronze-500/85 sm:text-xl ${reveal()}`}
+            style={{ transitionDelay: entered ? '320ms' : '0ms' }}
+          >
+            Natural. Gentle. Organic.
+            <span className="mt-1 block text-base text-bronze-500/70 sm:text-lg">
+              The sweet alternative to waxing — refined care for smoother, healthier skin.
+            </span>
+          </p>
+
           <div
-            className={`order-1 mb-8 mt-0 flex flex-col gap-3 sm:flex-row sm:items-center lg:order-2 lg:mb-0 lg:mt-8 ${reveal()}`}
+            className={`mt-8 flex flex-col gap-3 sm:flex-row sm:items-center ${reveal()}`}
             style={{ transitionDelay: entered ? '460ms' : '0ms' }}
           >
             <Link
-              to="/services"
+              to={CONTACT_PATH}
               className="btn-primary hover:scale-105 hover:shadow-lg"
+            >
+              Request Appointment
+            </Link>
+            <Link
+              to="/services"
+              className="btn-secondary hover:scale-105 hover:shadow-lg"
             >
               View Our Services
             </Link>
-            <Link
-              to="/contact"
-              className="btn-secondary hover:scale-105 hover:shadow-lg"
-            >
-              Book Appointment
-            </Link>
           </div>
+
+          <p
+            className={`mt-5 max-w-md text-sm italic text-bronze-500/75 ${reveal()}`}
+            style={{ transitionDelay: entered ? '560ms' : '0ms' }}
+          >
+            “She makes you feel so comfortable… Five stars isn’t even enough!”
+            <span className="mt-1 block not-italic text-xs text-bronze-500/55">— Nicôle Ginette</span>
+          </p>
         </div>
 
         <div className="relative order-1 flex justify-center lg:order-2 lg:col-span-6 xl:col-span-7 lg:justify-end">

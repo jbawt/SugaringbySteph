@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import ServiceCard from '../components/ServiceCard'
 import ScrollReveal from '../components/ScrollReveal'
+import ReviewCarousel from '../components/ReviewCarousel'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider } from '../components/Botanicals'
+import { CONTACT_PATH } from '../data/contact'
 
 const services = {
   intimate: {
@@ -88,6 +90,13 @@ export default function Services() {
                 className={service.name === 'Brazilian' ? 'bento-span-2-rows' : ''}
               />
             ))}
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-12 max-w-3xl mx-auto text-center">
+            <p className="font-script text-xl italic text-bronze-600/80">
+              “Such a great experience! This was my first time trying sugaring and I’m so glad I finally gave it a try.”
+            </p>
+            <p className="mt-2 text-sm text-gold-600">— Kendra Vandermeulen</p>
           </ScrollReveal>
         </div>
       </section>
@@ -200,18 +209,27 @@ export default function Services() {
         </ScrollReveal>
       </section>
 
+      {/* Reviews */}
+      <section className="py-16 bg-cream-50">
+        <ScrollReveal className="mx-auto max-w-4xl px-4 text-center">
+          <h2 className="section-heading">Kind Words</h2>
+          <FloralDivider className="mb-10" />
+          <ReviewCarousel />
+        </ScrollReveal>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-gold-500 to-gold-600">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-script text-4xl text-white mb-4">Ready to Book?</h2>
+          <h2 className="font-script text-4xl text-white mb-4">Ready for Smoother Skin?</h2>
           <p className="text-white/90 mb-8">
-            Contact me to schedule your appointment
+            Request your appointment and I’ll confirm a time that works for you
           </p>
           <Link 
-            to="/contact" 
+            to={CONTACT_PATH} 
             className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300"
           >
-            Book Now
+            Request Appointment
           </Link>
         </ScrollReveal>
       </section>

@@ -45,6 +45,14 @@ const faqs = [
     question: 'What should I do after my appointment?',
     answer: 'After sugaring, avoid hot baths, saunas, swimming, and intense exercise for 24-48 hours. Don\'t apply any products with fragrances or harsh chemicals to the treated area. Avoid sun exposure and tanning. Gently exfoliate 2-3 times per week starting 48 hours after your appointment to prevent ingrown hairs. Moisturize daily with a gentle, fragrance-free lotion.'
   },
+  {
+    question: 'How do I book an appointment?',
+    answer: 'You can request an appointment through the contact form on this website or by calling. Share the services you want and a few preferred times, and I\'ll confirm your appointment within 24 hours.'
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'Cash or e-transfer only. Payment is due at the time of your appointment.'
+  },
 ]
 
 export default function FAQ() {
@@ -97,7 +105,7 @@ export default function FAQ() {
             I'm happy to answer any questions you might have about sugaring or my services
           </p>
           <Link to="/contact" className="btn-primary">
-            Contact Me
+            Request Appointment
           </Link>
         </ScrollReveal>
       </section>

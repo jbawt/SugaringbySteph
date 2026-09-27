@@ -4,6 +4,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider, CornerAccent } from '../components/Botanicals'
+import { CONTACT_PATH } from '../data/contact'
 
 const benefits = [
   {
@@ -39,15 +40,15 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'No Ingrown Hairs',
-    description: 'Hair removed in natural direction'
+    title: 'Fewer Ingrowns',
+    description: 'Hair removed in its natural direction'
   },
 ]
 
 const expectSteps = [
   {
-    title: 'Book',
-    description: 'Schedule your appointment online or by phone',
+    title: 'Request',
+    description: 'Send a request online or call to set your time',
   },
   {
     title: 'Prepare',
@@ -64,9 +65,9 @@ const expectSteps = [
 ]
 
 const featuredServices = [
-  { name: 'Intimate', price: 'From $50', link: '/services#intimate', icon: <IntimateIcon /> },
-  { name: 'Body', price: 'From $25', link: '/services#body', icon: <BodyIcon /> },
-  { name: 'Face', price: 'From $15', link: '/services#face', icon: <FaceIcon /> },
+  { name: 'Intimate', price: 'Starting at $50', detail: 'Bikini $50 · Brazilian from $55', link: '/services#intimate', icon: <IntimateIcon /> },
+  { name: 'Body', price: 'Starting at $25', detail: 'Underarms, legs, arms & more', link: '/services#body', icon: <BodyIcon /> },
+  { name: 'Face', price: 'Starting at $15', detail: 'Upper lip & chin', link: '/services#face', icon: <FaceIcon /> },
 ]
 
 export default function Home() {
@@ -74,17 +75,12 @@ export default function Home() {
     <div>
       <Hero />
 
-      {/* Intro Section */}
-      <section className="py-20 bg-cream-50">
-        <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="section-heading">The Sweet Alternative to Waxing</h2>
-          <FloralDivider className="mb-8" />
-          <p className="text-lg text-bronze-500/80 leading-relaxed">
-            Sugaring is an ancient hair removal technique using a simple paste made from sugar, 
-            lemon juice, and water. Unlike waxing, sugaring paste only adheres to hair—not 
-            skin—making it gentler and less painful. Experience smooth, beautiful skin the 
-            natural way.
-          </p>
+      {/* Reviews — early social proof */}
+      <section className="py-16 bg-cream-200">
+        <ScrollReveal className="mx-auto max-w-4xl px-4 text-center">
+          <h2 className="section-heading">Kind Words</h2>
+          <FloralDivider className="mb-10" />
+          <ReviewCarousel />
         </ScrollReveal>
       </section>
 
@@ -95,7 +91,7 @@ export default function Home() {
             <h2 className="section-heading">Our Services</h2>
             <FloralDivider className="mb-6" />
             <p className="section-subheading">
-              Professional sugaring services tailored to your needs
+              Professional sugaring tailored to your needs
             </p>
           </ScrollReveal>
           
@@ -110,8 +106,9 @@ export default function Home() {
                 {service.icon}
                 <h3 className="font-script text-3xl text-gold-600 mb-2">{service.name}</h3>
                 <p className="text-bronze-500 font-medium">{service.price}</p>
+                <p className="mt-1 text-sm text-bronze-500/60">{service.detail}</p>
                 <span className="inline-flex items-center mt-4 text-gold-600 group-hover:gap-2 transition-all">
-                  Learn More 
+                  View pricing 
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -122,14 +119,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-20 bg-cream-50">
+      {/* Compact why sugaring */}
+      <section className="py-16 bg-cream-50">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
-            <h2 className="section-heading">Why Choose Sugaring?</h2>
-            <FloralDivider className="mb-6" />
-            <p className="section-subheading">
-              Discover the benefits of this ancient, natural hair removal method
+            <h2 className="section-heading">Why Sugaring?</h2>
+            <FloralDivider className="mb-4" />
+            <p className="section-subheading mb-10">
+              A natural paste of sugar, lemon, and water that grips hair—not skin—for a gentler, longer-lasting result.
             </p>
           </ScrollReveal>
           
@@ -148,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* What to Expect */}
-      <section className="py-20 bg-cream-100">
+      <section className="py-16 bg-cream-100">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal>
             <h2 className="section-heading">What to Expect</h2>
@@ -169,15 +166,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="py-20 bg-cream-200">
-        <ScrollReveal className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="section-heading">Kind Words</h2>
-          <FloralDivider className="mb-10" />
-          <ReviewCarousel />
-        </ScrollReveal>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-gold-500 to-gold-600">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
@@ -185,10 +173,10 @@ export default function Home() {
             Ready to Experience the Difference?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Book your appointment today and discover smoother, healthier skin
+            Request your appointment today and discover smoother, healthier skin
           </p>
-          <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300">
-            Book Your Appointment
+          <Link to={CONTACT_PATH} className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300">
+            Request Appointment
           </Link>
         </ScrollReveal>
       </section>

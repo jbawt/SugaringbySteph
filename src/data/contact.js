@@ -1,0 +1,7 @@
+export const PHONE_DISPLAY = '587-377-1195'
+export const PHONE_TEL = 'tel:5873771195'
+export const EMAIL = 'hello@sugaringbysteph.ca'
+export const EMAIL_MAILTO = 'mailto:hello@sugaringbysteph.ca'
+export const LOCATION_LINE = 'Woodland Crescent, Sylvan Lake'
+export const HOURS = 'Mon–Fri 9am–5pm · Weekend hours may vary'
+export const CONTACT_PATH = '/contact'

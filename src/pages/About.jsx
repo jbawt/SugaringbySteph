@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
+import ReviewCarousel from '../components/ReviewCarousel'
 import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
 import profilePhoto from '../assets/StephProfilePhoto.jpeg'
+import { CONTACT_PATH } from '../data/contact'
 
 const values = [
   {
@@ -99,6 +101,9 @@ export default function About() {
                   Whether you're new to sugaring or a longtime fan, I'm here to provide 
                   you with a comfortable, professional experience and results you'll love.
                 </p>
+                <Link to={CONTACT_PATH} className="btn-primary mt-6 inline-flex">
+                  Request Appointment
+                </Link>
               </div>
             </div>
           </ScrollReveal>
@@ -155,6 +160,15 @@ export default function About() {
         </div>
       </section>
 
+      {/* Reviews */}
+      <section className="py-16 bg-cream-100">
+        <ScrollReveal className="mx-auto max-w-4xl px-4 text-center">
+          <h2 className="section-heading">Kind Words</h2>
+          <FloralDivider className="mb-10" />
+          <ReviewCarousel />
+        </ScrollReveal>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-gold-500 to-gold-600">
         <ScrollReveal className="max-w-4xl mx-auto px-4 text-center">
@@ -163,10 +177,10 @@ export default function About() {
             I'd love to help you experience the benefits of sugaring
           </p>
           <Link 
-            to="/contact" 
+            to={CONTACT_PATH} 
             className="inline-flex items-center justify-center px-8 py-4 bg-cream-50 text-gold-700 font-medium rounded-full shadow-lg hover:bg-cream-100 dark:bg-cream-300 dark:text-gold-600 dark:hover:bg-cream-200 transform hover:-translate-y-0.5 transition-all duration-300"
           >
-            Get in Touch
+            Request Appointment
           </Link>
         </ScrollReveal>
       </section>
