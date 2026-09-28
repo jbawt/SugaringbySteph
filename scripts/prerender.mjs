@@ -21,15 +21,42 @@ function deferBootInHtml(html) {
 (function(){
   var src=${JSON.stringify(srcPath)};
   var boot=function(){import(src)};
-  if('requestIdleCallback' in window){
-    requestIdleCallback(boot,{timeout:1800});
-  } else {
-    window.addEventListener('load', function(){ setTimeout(boot, 1); });
-  }
+  var schedule=function(){
+    if('requestIdleCallback' in window){
+      requestIdleCallback(boot,{timeout:4000});
+    } else {
+      setTimeout(boot,1);
+    }
+  };
+  // Wait for load so prerendered HTML can paint as FCP/LCP without competing with React.
+  if(document.readyState==='complete'){schedule();}
+  else{window.addEventListener('load',schedule,{once:true});}
 })();
 </script>`,
   )
   return next
+}
+
+/** Remove third-party tags accidentally captured during Puppeteer snapshot. */
+function scrubThirdPartyFromHtml(html) {
+  return html
+    .replace(/<script[^>]*googletagmanager\.com[^>]*>\s*<\/script>/gi, '')
+    .replace(/<script[^>]*>[\s\S]*?googletagmanager\.com[\s\S]*?<\/script>/gi, '')
+    .replace(/<script[^>]*>[\s\S]*?gtag\s*\([\s\S]*?<\/script>/gi, '')
+}
+
+/** Critical font faces so preloaded WOFF2 can apply before async CSS. */
+const CRITICAL_FONT_FACES = `<style id="critical-fonts">
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/cormorant-600.woff2) format("woff2")}
+@font-face{font-family:Lato;font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/lato-400.woff2) format("woff2")}
+</style>`
+
+function injectCriticalFonts(html) {
+  if (html.includes('id="critical-fonts"')) return html
+  if (html.includes('</head>')) {
+    return html.replace('</head>', `${CRITICAL_FONT_FACES}</head>`)
+  }
+  return html
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -147,9 +174,14 @@ async function main() {
       let html = await page.content()
       try {
         html = await beasties.process(html)
+        html = scrubThirdPartyFromHtml(html)
+        html = injectCriticalFonts(html)
         html = deferBootInHtml(html)
       } catch (error) {
         console.warn(`  beasties failed on ${route}:`, error.message)
+        html = scrubThirdPartyFromHtml(html)
+        html = injectCriticalFonts(html)
+        html = deferBootInHtml(html)
       }
 
       const hasJsonLd = html.includes('application/ld+json')

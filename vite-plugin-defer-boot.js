@@ -20,11 +20,15 @@ export function deferSpaBoot() {
 (function(){
   var src=${JSON.stringify(src)};
   var boot=function(){import(src)};
-  if('requestIdleCallback' in window){
-    requestIdleCallback(boot,{timeout:1800});
-  } else {
-    window.addEventListener('load', function(){ setTimeout(boot, 1); });
-  }
+  var schedule=function(){
+    if('requestIdleCallback' in window){
+      requestIdleCallback(boot,{timeout:4000});
+    } else {
+      setTimeout(boot,1);
+    }
+  };
+  if(document.readyState==='complete'){schedule();}
+  else{window.addEventListener('load',schedule,{once:true});}
 })();
 </script>`,
         )

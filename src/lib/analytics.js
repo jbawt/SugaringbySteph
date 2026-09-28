@@ -3,7 +3,10 @@
 export const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || ''
 
 export function isAnalyticsEnabled() {
-  return Boolean(GA_MEASUREMENT_ID) && typeof window !== 'undefined'
+  if (!GA_MEASUREMENT_ID || typeof window === 'undefined') return false
+  // Never inject gtag during prerender snapshots (it would ship in static HTML).
+  if (window.__PRERENDER__ || navigator.webdriver) return false
+  return true
 }
 
 export function initAnalytics() {

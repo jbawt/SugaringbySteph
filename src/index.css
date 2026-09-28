@@ -613,8 +613,8 @@ html {
     object-fit: contain;
     /* Optical centering without transform (transform can soft-blur on retina). */
     position: relative;
-    left: -2.5%;
-    top: 2%;
+    left: 1.5%;
+    top: 9%;
   }
 
   .hero-visual-card:hover {

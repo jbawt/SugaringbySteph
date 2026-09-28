@@ -34,14 +34,12 @@
     />
     <meta name="twitter:image" content="https://sugaringbysteph.ca/opengraph.jpg" />
 
-    <!-- LCP image + fonts -->
+    <!-- LCP image + fonts (preload only the mobile-sized logo — avoids fetching 2x early) -->
     <link
       rel="preload"
       href="/logo.webp"
       as="image"
       type="image/webp"
-      imagesrcset="/logo.webp 512w, /logo-2x.webp 768w"
-      imagesizes="(min-width: 1024px) 24rem, (min-width: 640px) 19rem, 12rem"
       fetchpriority="high"
     />
     <link

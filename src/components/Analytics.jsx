@@ -7,54 +7,53 @@ import {
   trackPhoneClick,
 } from '../lib/analytics'
 
-function scheduleIdle(fn, timeout = 4000) {
-  if (typeof window.requestIdleCallback === 'function') {
-    const id = window.requestIdleCallback(fn, { timeout })
-    return () => window.cancelIdleCallback?.(id)
-  }
-  const id = window.setTimeout(fn, 2000)
-  return () => window.clearTimeout(id)
-}
-
 /**
- * Loads GA4 after first paint / idle so it does not compete with LCP.
- * Tracks SPA page views and tel: conversion clicks.
- * No-ops when VITE_GA_MEASUREMENT_ID is unset.
+ * Loads GA4 after first interaction (or a 10s fallback) so LCP/TBT aren't
+ * competing with gtag in lab tests. Tracks SPA page views + tel: clicks.
  */
 export default function Analytics() {
   const location = useLocation()
 
+  // Defer first GA load until engagement (or timeout).
   useEffect(() => {
     if (!isAnalyticsEnabled()) return undefined
+    if (window.__gaInitialized) return undefined
 
     let cancelled = false
-    let cancelIdle = () => {}
+    let timeoutId = 0
 
     const boot = () => {
-      if (cancelled) return
+      if (cancelled || window.__gaInitialized) return
+      cleanup()
       initAnalytics()
-      trackPageView(`${location.pathname}${location.search}`)
+      trackPageView(`${window.location.pathname}${window.location.search}`)
     }
 
-    // Wait for window load, then idle — keeps gtag off the LCP critical path.
-    if (document.readyState === 'complete') {
-      cancelIdle = scheduleIdle(boot)
-    } else {
-      const onLoad = () => {
-        cancelIdle = scheduleIdle(boot)
-      }
-      window.addEventListener('load', onLoad, { once: true })
-      return () => {
-        cancelled = true
-        window.removeEventListener('load', onLoad)
-        cancelIdle()
-      }
+    const onInteract = () => boot()
+
+    const cleanup = () => {
+      window.removeEventListener('scroll', onInteract)
+      window.removeEventListener('pointerdown', onInteract)
+      window.removeEventListener('keydown', onInteract)
+      if (timeoutId) window.clearTimeout(timeoutId)
     }
+
+    window.addEventListener('scroll', onInteract, { once: true, passive: true })
+    window.addEventListener('pointerdown', onInteract, { once: true, passive: true })
+    window.addEventListener('keydown', onInteract, { once: true })
+    timeoutId = window.setTimeout(boot, 10000)
 
     return () => {
       cancelled = true
-      cancelIdle()
+      cleanup()
     }
+  }, [])
+
+  // SPA page views after GA is ready.
+  useEffect(() => {
+    if (!isAnalyticsEnabled()) return
+    if (!window.__gaInitialized) return
+    trackPageView(`${location.pathname}${location.search}`)
   }, [location.pathname, location.search])
 
   useEffect(() => {
