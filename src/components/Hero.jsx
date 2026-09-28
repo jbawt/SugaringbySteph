@@ -63,6 +63,7 @@ export default function Hero({ className = '' }) {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       className={`relative min-h-[100svh] overflow-hidden mesh-gradient-hero ${className}`}
+      data-hero
     >
       <div className="absolute inset-0 bg-gradient-to-br from-cream-100 via-cream-50/40 to-gold-100/40 dark:from-cream-100 dark:via-cream-50/50 dark:to-gold-100/20" />
       <div

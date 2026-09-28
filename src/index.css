@@ -60,12 +60,17 @@
 }
 
 html {
+  scroll-padding-bottom: 0;
+}
+
+html.mobile-action-bar-visible {
   /* Keep in-page anchors / focus above the sticky mobile Call + Request bar */
   scroll-padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 768px) {
-  html {
+  html,
+  html.mobile-action-bar-visible {
     scroll-padding-bottom: 0;
   }
 }
@@ -669,6 +674,16 @@ html {
     border-top: 1px solid rgb(var(--color-gold-200));
     backdrop-filter: blur(12px);
     box-shadow: 0 -8px 24px -12px rgba(75, 57, 11, 0.18);
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 360ms var(--ease-spa), opacity 280ms var(--ease-spa);
+  }
+
+  .mobile-action-bar.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .dark .mobile-action-bar {
@@ -709,11 +724,17 @@ html {
   }
 
   .has-mobile-action-bar {
+    padding-bottom: 0;
+    transition: padding-bottom 360ms var(--ease-spa);
+  }
+
+  html.mobile-action-bar-visible .has-mobile-action-bar {
     padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
   }
 
   @media (min-width: 768px) {
-    .has-mobile-action-bar {
+    .has-mobile-action-bar,
+    html.mobile-action-bar-visible .has-mobile-action-bar {
       padding-bottom: 0;
     }
   }
@@ -721,16 +742,22 @@ html {
   .social-dock {
     position: fixed;
     right: 1rem;
-    bottom: calc(5.25rem + env(safe-area-inset-bottom));
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
     z-index: 40;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.75rem;
+    transition: bottom 360ms var(--ease-spa);
+  }
+
+  html.mobile-action-bar-visible .social-dock {
+    bottom: calc(5.25rem + env(safe-area-inset-bottom));
   }
 
   @media (min-width: 768px) {
-    .social-dock {
+    .social-dock,
+    html.mobile-action-bar-visible .social-dock {
       bottom: 1.5rem;
     }
   }
