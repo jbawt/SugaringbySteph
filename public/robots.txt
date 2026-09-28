@@ -3,4 +3,3 @@ Allow: /
 Disallow: /__forms.html
 
 Sitemap: https://sugaringbysteph.ca/sitemap.xml
-Agentmap: https://sugaringbysteph.ca/.well-known/ai-catalog.json
