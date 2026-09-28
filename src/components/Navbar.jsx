@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from '../assets/Logo_nav.webp'
 import ThemeToggle from './ThemeToggle'
 import { CONTACT_PATH, PHONE_DISPLAY, PHONE_TEL } from '../data/contact'
 
@@ -18,9 +19,15 @@ export default function Navbar() {
     <header className="navbar-glass fixed top-0 left-0 right-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo mark via CSS background so it cannot become the LCP image */}
-          <Link to="/" className="flex items-center gap-3" aria-label="Sugaring by Steph home">
-            <span className="nav-logo-mark" aria-hidden="true" />
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt="Sugaring by Steph"
+              width={64}
+              height={64}
+              decoding="async"
+              className="h-16 w-16 object-contain"
+            />
             <div className="hidden sm:block">
               <span className="font-script text-2xl text-gold-600">Sugaring</span>
               <span className="font-script text-xl text-bronze-500 ml-1">by Steph</span>

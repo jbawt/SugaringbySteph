@@ -35,7 +35,15 @@
     <meta name="twitter:image" content="https://sugaringbysteph.ca/opengraph.jpg" />
 
     <!-- LCP image + fonts -->
-    <link rel="preload" href="/logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link
+      rel="preload"
+      href="/logo-2x.webp"
+      as="image"
+      type="image/webp"
+      imagesrcset="/logo.webp 512w, /logo-2x.webp 1024w"
+      imagesizes="(min-width: 1024px) 24rem, (min-width: 640px) 19rem, 12rem"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       href="/fonts/cormorant-600.woff2"

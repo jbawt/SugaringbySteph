@@ -146,9 +146,11 @@ export default function Hero({ className = '' }) {
               <div className="flex h-[86%] w-[86%] items-center justify-center overflow-hidden rounded-full border border-gold-200/80 bg-cream-100/80 dark:border-gold-200/50 dark:bg-cream-100/80">
                 <img
                   src="/logo.webp"
+                  srcSet="/logo.webp 512w, /logo-2x.webp 1024w"
+                  sizes="(min-width: 1024px) 24rem, (min-width: 640px) 19rem, 12rem"
                   alt="Sugaring by Steph"
-                  width={140}
-                  height={140}
+                  width={512}
+                  height={512}
                   decoding="async"
                   fetchPriority="high"
                   className="hero-logo"

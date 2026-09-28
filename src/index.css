@@ -315,14 +315,6 @@ html {
     box-shadow: 0 4px 30px rgba(139, 105, 20, 0.05);
   }
 
-  .nav-logo-mark {
-    display: block;
-    width: 4rem;
-    height: 4rem;
-    flex-shrink: 0;
-    background: url('../assets/Logo_nav.webp') center / contain no-repeat;
-  }
-
   .dark .navbar-glass {
     background: rgba(14, 12, 9, 0.88);
     border-bottom: 1px solid rgba(212, 175, 55, 0.16);
@@ -619,9 +611,10 @@ html {
     width: 94%;
     height: 94%;
     object-fit: contain;
-    /* Optical centering: PNG artwork sits right/low, and the
-       wordmark extends above the circular seal. */
-    transform: translate(-2.4%, 2%);
+    /* Optical centering without transform (transform can soft-blur on retina). */
+    position: relative;
+    left: -2.4%;
+    top: 2%;
   }
 
   .hero-visual-card:hover {
