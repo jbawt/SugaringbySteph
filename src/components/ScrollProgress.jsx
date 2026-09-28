@@ -6,14 +6,24 @@ export default function ScrollProgress() {
   useEffect(() => {
     const updateProgress = () => {
       const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const docHeight = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        0,
+      )
       const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
       setProgress(scrollPercent)
     }
 
-    window.addEventListener('scroll', updateProgress, { passive: true })
-    updateProgress()
-    return () => window.removeEventListener('scroll', updateProgress)
+    // Defer first measurement so it does not force layout during startup.
+    const startId = window.requestAnimationFrame(() => {
+      window.addEventListener('scroll', updateProgress, { passive: true })
+      updateProgress()
+    })
+
+    return () => {
+      window.cancelAnimationFrame(startId)
+      window.removeEventListener('scroll', updateProgress)
+    }
   }, [])
 
   if (progress === 0) return null

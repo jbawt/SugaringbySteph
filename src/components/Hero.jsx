@@ -11,7 +11,7 @@ export default function Hero({ className = '' }) {
   const glowRef = useRef(null)
   const rafRef = useRef(0)
   const pointerRef = useRef({ x: 62, y: 38 })
-  const [entered, setEntered] = useState(false)
+  const [entered] = useState(true)
   const [reduceMotion, setReduceMotion] = useState(false)
 
   useEffect(() => {
@@ -20,11 +20,8 @@ export default function Hero({ className = '' }) {
     syncMotion()
     media.addEventListener('change', syncMotion)
 
-    const enterTimer = window.setTimeout(() => setEntered(true), media.matches ? 0 : 40)
-
     return () => {
       media.removeEventListener('change', syncMotion)
-      window.clearTimeout(enterTimer)
       if (rafRef.current) window.cancelAnimationFrame(rafRef.current)
     }
   }, [])
@@ -94,16 +91,12 @@ export default function Hero({ className = '' }) {
           </div>
 
           <h1
-            className={`font-script text-[3.15rem] leading-[0.95] text-gold-600 sm:text-6xl lg:text-[4.6rem] xl:text-[5.1rem] ${reveal()}`}
+            className={`font-script text-[3.4rem] leading-[0.95] text-gold-600 sm:text-6xl lg:text-[4.6rem] xl:text-[5.1rem] ${reveal()}`}
             style={{ transitionDelay: entered ? '180ms' : '0ms' }}
           >
             <span className="sr-only">Sugaring in Sylvan Lake by Sugaring by Steph. </span>
-            <span className="bg-gradient-to-r from-bronze-700 via-gold-500 to-gold-600 bg-clip-text text-transparent">
-              Smooth Skin,
-            </span>
-            <span className="mt-1 block bg-gradient-to-r from-gold-600 via-gold-500 to-bronze-500 bg-clip-text text-transparent">
-              Naturally
-            </span>
+            <span className="text-bronze-700">Smooth Skin,</span>
+            <span className="mt-1 block text-gold-600">Naturally</span>
           </h1>
 
           <p
@@ -154,8 +147,8 @@ export default function Hero({ className = '' }) {
                 <img
                   src="/logo.webp"
                   alt="Sugaring by Steph"
-                  width={320}
-                  height={320}
+                  width={140}
+                  height={140}
                   decoding="async"
                   fetchPriority="high"
                   className="hero-logo"

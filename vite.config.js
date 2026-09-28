@@ -2,6 +2,7 @@ import { copyFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { deferSpaBoot } from './vite-plugin-defer-boot.js'
 
 /** Copy index.html → 404.html so GitHub Pages serves the SPA on deep links. */
 function githubPagesSpaFallback() {
@@ -14,18 +15,20 @@ function githubPagesSpaFallback() {
   }
 }
 
-// GitHub Pages project sites live at /repo-name/. Netlify / local stay at /.
 const base = process.env.BASE_PATH || '/'
 
 export default defineConfig({
   base,
-  plugins: [react(), githubPagesSpaFallback()],
+  plugins: [react(), deferSpaBoot(), githubPagesSpaFallback()],
   build: {
     outDir: 'dist',
-    // Sourcemaps bloat deploys; enable locally with `SOURCEMAP=true npm run build:vite`
     sourcemap: process.env.SOURCEMAP === 'true',
     cssCodeSplit: true,
-    assetsInlineLimit: 4096,
+    assetsInlineLimit: 2048,
+    cssMinify: true,
+    minify: 'esbuild',
+    target: 'es2020',
+    modulePreload: false,
     rollupOptions: {
       output: {
         manualChunks: {

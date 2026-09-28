@@ -2,6 +2,8 @@
  * Build-time prerender for marketing routes.
  * Writes static HTML into dist/ so Netlify serves real files to crawlers
  * (static files take precedence over the SPA /* → /index.html redirect).
+ *
+ * After snapshotting, Beasties inlines above-the-fold CSS and loads the rest async.
  */
 import { execSync } from 'node:child_process'
 import { mkdir, writeFile } from 'node:fs/promises'
@@ -9,6 +11,26 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { preview } from 'vite'
 import puppeteer from 'puppeteer'
+import Beasties from 'beasties'
+
+function deferBootInHtml(html) {
+  let next = html.replace(/<link[^>]+rel=["']modulepreload["'][^>]*>\s*/gi, '')
+  next = next.replace(
+    /<script type="module"[^>]*src="([^"]+)"[^>]*><\/script>/i,
+    (_full, srcPath) => `<script type="module">
+(function(){
+  var src=${JSON.stringify(srcPath)};
+  var boot=function(){import(src)};
+  if('requestIdleCallback' in window){
+    requestIdleCallback(boot,{timeout:1800});
+  } else {
+    window.addEventListener('load', function(){ setTimeout(boot, 1); });
+  }
+})();
+</script>`,
+  )
+  return next
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
@@ -58,10 +80,9 @@ async function waitForPageReady(page) {
       const root = document.getElementById('root')
       return Boolean(root && root.innerText && root.innerText.trim().length > 80)
     },
-    { timeout: 30000 }
+    { timeout: 30000 },
   )
 
-  // Give Helmet a moment to flush title/meta/JSON-LD into <head>.
   await new Promise((resolve) => setTimeout(resolve, 500))
 
   await page.evaluate(async () => {
@@ -87,6 +108,20 @@ async function main() {
   const baseUrl = 'http://127.0.0.1:4173'
   console.log(`Preview at ${baseUrl}`)
 
+  const beasties = new Beasties({
+    path: distDir,
+    publicPath: '/',
+    // Mobile first viewport for critical CSS
+    width: 412,
+    height: 915,
+    inlineFonts: false,
+    preload: 'media',
+    noscriptFallback: true,
+    reduceInlineStyles: true,
+    pruneSource: false,
+    mergeStylesheets: true,
+  })
+
   const browser = await launchBrowser()
 
   try {
@@ -106,11 +141,17 @@ async function main() {
       const url = `${baseUrl}${route}`
       console.log(`Prerendering ${url}`)
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 })
-      // Wait for JS bundles / fonts without hanging forever on open connections.
       await page.waitForNetworkIdle({ idleTime: 500, timeout: 15000 }).catch(() => {})
       await waitForPageReady(page)
 
-      const html = await page.content()
+      let html = await page.content()
+      try {
+        html = await beasties.process(html)
+        html = deferBootInHtml(html)
+      } catch (error) {
+        console.warn(`  beasties failed on ${route}:`, error.message)
+      }
+
       const hasJsonLd = html.includes('application/ld+json')
       const hasContent = html.includes('Sugaring')
       if (!hasContent) {

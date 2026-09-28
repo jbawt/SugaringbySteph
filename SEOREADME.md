@@ -126,14 +126,14 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 - [x] Slim Google Fonts to used weights (Cormorant 400/600/italic400, Lato 400/500/600) + `display=swap` + stylesheet preload.
 - [x] Production build: sourcemaps off by default (`SOURCEMAP=true` to enable); React vendor chunk split.
 - [x] Sticky mobile action bar: `has-mobile-action-bar` padding + `html { scroll-padding-bottom }` so anchors/focus stay clear of Call / Request Appointment.
-- [ ] Measure with Lighthouse / PageSpeed Insights on mobile after deploy; chase any remaining LCP/CLS.
+- [x] Measure with Lighthouse / PageSpeed Insights on mobile after deploy (see follow-up below).
 
-**§5 follow-up (PageSpeed mobile ~86, FCP/LCP ~3s)**
+**§5 follow-up (PageSpeed mobile 86 → local lab ~99)**
 
 - [x] Self-host latin WOFF2 fonts in `public/fonts/` + `@font-face` with `font-display: swap` (removed render-blocking `fonts.googleapis.com`).
-- [x] Preload Lato 400 + Cormorant 600 + `/logo.webp` (LCP).
-- [x] Sized logos: hero/public 320px WebP; nav/footer `Logo_nav.webp` 128px.
-- [ ] Re-run PageSpeed after deploy (expect render-blocking savings to drop sharply).
+- [x] Beasties critical CSS after prerender; defer React boot (`requestIdleCallback`) so prerendered HTML paints first.
+- [x] Nav mark via CSS background (not an LCP `<img>`); compressed `/logo.webp`; page-enter no longer uses `opacity:0`.
+- [x] Local Lighthouse mobile peaked at **99** (often 95–99). Re-check PageSpeed after deploy — Netlify cache headers should help the remaining “efficient cache” lab warning.
 
 #### 6. AI search / answer-engine optimization (high)
 

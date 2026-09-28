@@ -134,8 +134,9 @@ html {
 }
 
 @keyframes page-fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  /* Transform only — opacity:0 here made the sticky mobile bar the LCP element */
+  from { transform: translateY(6px); }
+  to { transform: translateY(0); }
 }
 
 @keyframes fade-up-once {
@@ -312,6 +313,14 @@ html {
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
     box-shadow: 0 4px 30px rgba(139, 105, 20, 0.05);
+  }
+
+  .nav-logo-mark {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    background: url('../assets/Logo_nav.webp') center / contain no-repeat;
   }
 
   .dark .navbar-glass {
