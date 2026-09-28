@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo_transparent.webp'
+import logo from '../assets/Logo_nav.webp'
 import { FloralDivider } from './Botanicals'
 import {
   CONTACT_PATH,

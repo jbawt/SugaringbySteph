@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../assets/Logo_transparent.webp'
+import logo from '../assets/Logo_nav.webp'
 import ThemeToggle from './ThemeToggle'
 import { CONTACT_PATH, PHONE_DISPLAY, PHONE_TEL } from '../data/contact'
 
@@ -27,7 +27,6 @@ export default function Navbar() {
               width={64}
               height={64}
               decoding="async"
-              fetchPriority="high"
               className="h-16 w-16 object-contain"
             />
             <div className="hidden sm:block">

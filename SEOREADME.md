@@ -128,6 +128,13 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 - [x] Sticky mobile action bar: `has-mobile-action-bar` padding + `html { scroll-padding-bottom }` so anchors/focus stay clear of Call / Request Appointment.
 - [ ] Measure with Lighthouse / PageSpeed Insights on mobile after deploy; chase any remaining LCP/CLS.
 
+**§5 follow-up (PageSpeed mobile ~86, FCP/LCP ~3s)**
+
+- [x] Self-host latin WOFF2 fonts in `public/fonts/` + `@font-face` with `font-display: swap` (removed render-blocking `fonts.googleapis.com`).
+- [x] Preload Lato 400 + Cormorant 600 + `/logo.webp` (LCP).
+- [x] Sized logos: hero/public 320px WebP; nav/footer `Logo_nav.webp` 128px.
+- [ ] Re-run PageSpeed after deploy (expect render-blocking savings to drop sharply).
+
 #### 6. AI search / answer-engine optimization (high)
 
 AI overviews and chat tools prefer **clear, factual, citeable** pages.
