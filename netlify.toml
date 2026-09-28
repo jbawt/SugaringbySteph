@@ -3,6 +3,8 @@
   publish = "dist"
 
 [build.environment]
+  # GA4 measurement ID (public; same as gtag snippet in GA admin)
+  VITE_GA_MEASUREMENT_ID = "G-7S7SFLFX8Y"
   # Keep Chromium cache inside the project for Netlify builds
   PUPPETEER_CACHE_DIR = "/opt/build/cache/puppeteer"
   PUPPETEER_SKIP_DOWNLOAD = "false"

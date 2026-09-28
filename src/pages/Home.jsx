@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
+import BusinessSummary from '../components/BusinessSummary'
 import { IntimateIcon, BodyIcon, FaceIcon } from '../components/ServiceIcons'
 import { FloralDivider, CornerAccent } from '../components/Botanicals'
 import { CONTACT_PATH } from '../data/contact'
@@ -78,11 +79,16 @@ export default function Home() {
       <Seo {...pageSeo.home} />
       <Hero />
 
+      <BusinessSummary />
+
       {/* Reviews — early social proof */}
       <section className="py-16 bg-cream-200">
         <ScrollReveal className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="section-heading">Kind Words</h2>
           <FloralDivider className="mb-10" />
+          <p className="mb-8 text-bronze-500/75">
+            Recent client feedback (name and quote shown for each review).
+          </p>
           <ReviewCarousel />
         </ScrollReveal>
       </section>

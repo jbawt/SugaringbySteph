@@ -14,6 +14,7 @@ import {
   PHONE_TEL,
 } from '../data/contact'
 import { pageSeo } from '../data/seo'
+import { trackContactSubmit } from '../lib/analytics'
 
 const services = [
   'Brazilian',
@@ -97,6 +98,7 @@ export default function Contact() {
         throw new Error(`Form submission failed (${response.status})`)
       }
 
+      trackContactSubmit()
       setSubmitted(true)
     } catch {
       setSubmitError('Something went wrong sending your request. Please try again or call directly.')

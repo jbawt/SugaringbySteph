@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import SocialDock from './components/SocialDock'
 import MobileActionBar from './components/MobileActionBar'
 import JsonLd from './components/JsonLd'
+import Analytics from './components/Analytics'
 import Home from './pages/Home'
 import { buildLocalBusinessSchema, buildWebsiteSchema } from './data/structuredData'
 
@@ -69,6 +70,7 @@ export default function App() {
   return (
     <div className="has-mobile-action-bar min-h-screen flex flex-col bg-cream-100">
       <JsonLd data={[buildLocalBusinessSchema(), buildWebsiteSchema()]} />
+      <Analytics />
       <DeferredScrollProgress />
       <ScrollToTop />
       <Navbar />

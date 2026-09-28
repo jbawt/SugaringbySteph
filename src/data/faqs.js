@@ -42,7 +42,7 @@ export const faqs = [
   {
     question: 'What areas can be sugared?',
     answer:
-      "Sugaring can be done on almost any area of the body where you have unwanted hair. I offer services for intimate areas (Brazilian, bikini), body areas (legs, arms, underarms, back, stomach), and facial areas (upper lip, chin). If you're unsure whether sugaring is right for a specific area, feel free to ask!",
+      'Sugaring can be done on almost any area of the body where you have unwanted hair. Sugaring by Steph in Sylvan Lake offers intimate services (Brazilian, bikini), body areas (legs, arms, underarms, back, stomach), and facial areas (upper lip, chin). Full prices are listed at https://sugaringbysteph.ca/services.',
   },
   {
     question: 'What should I do after my appointment?',
@@ -52,10 +52,11 @@ export const faqs = [
   {
     question: 'How do I book an appointment?',
     answer:
-      "You can request an appointment through the contact form on this website or by calling. Share the services you want and a few preferred times, and I'll confirm your appointment within 24 hours.",
+      'You can request an appointment at https://sugaringbysteph.ca/contact or by calling Sugaring by Steph at 587-377-1195 (or emailing hello@sugaringbysteph.ca). Share the services you want and a few preferred times, and Steph will confirm within 24 hours. The studio is on Woodland Crescent in Sylvan Lake, Alberta.',
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'Cash or e-transfer only. Payment is due at the time of your appointment.',
+    answer:
+      'Sugaring by Steph accepts cash or e-transfer only. Payment is due at the time of your appointment at the Sylvan Lake studio.',
   },
 ]

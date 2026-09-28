@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import ScrollReveal from '../components/ScrollReveal'
 import ReviewCarousel from '../components/ReviewCarousel'
+import BusinessSummary from '../components/BusinessSummary'
 import { FloralDivider, CurvedBranch, LeafSprig, CornerAccent } from '../components/Botanicals'
 import profilePhoto from '../assets/StephProfilePhoto.webp'
 import { CONTACT_PATH, SUGARSMAC_PROFILE_URL } from '../data/contact'
@@ -138,6 +139,8 @@ export default function About() {
           </ScrollReveal>
         </div>
       </section>
+
+      <BusinessSummary className="bg-cream-200" />
 
       {/* Why I Chose Sugaring */}
       <section className="relative py-16 bg-cream-100 overflow-hidden">

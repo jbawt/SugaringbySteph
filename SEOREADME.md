@@ -16,7 +16,7 @@ npm run build
 npm run preview
 ```
 
-Deploy via Netlify Git integration or `netlify deploy --prod --dir=dist`. Contact form uses Netlify Forms (`public/__forms.html` + AJAX POST). Enable form email notifications in the Netlify UI after deploy.
+Deploy via Netlify Git integration or `netlify deploy --prod --dir=dist`. Contact form uses Netlify Forms (`public/__forms.html` + AJAX POST). Enable form email notifications in the Netlify UI after deploy. Analytics: set `VITE_GA_MEASUREMENT_ID` (see SEOREADME §7).
 
 Shared business details live in `src/data/contact.js` (phone, email, location, hours).
 
@@ -35,6 +35,7 @@ This site is a **client-rendered SPA**. That works for users, but search engines
 | Per-page titles/descriptions | Done (`src/components/Seo.jsx` + `src/data/seo.js`) |
 | Canonical URLs | Done (absolute `https://sugaringbysteph.ca/...`) |
 | `robots.txt` / `sitemap.xml` | Present in `public/` |
+| `llms.txt` (AI crawlers) | Present at `/llms.txt` |
 | Structured data (JSON-LD) | Done (`BeautySalon`, `FAQPage`, service offers) |
 | Twitter / social cards | Missing |
 | Google Business Profile | Not set up yet (client) |
@@ -139,39 +140,38 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 
 AI overviews and chat tools prefer **clear, factual, citeable** pages.
 
-- [ ] Add `public/llms.txt` (emerging convention) summarizing the business for AI crawlers, for example:
-  ```
-  # Sugaring by Steph
-  > Natural sugaring hair removal in Sylvan Lake, Alberta.
-
-  ## Contact
-  - Phone: 587-377-1195
-  - Email: hello@sugaringbysteph.ca
-  - Location: Woodland Crescent, Sylvan Lake
-  - Hours: Mon–Fri 9am–5pm; weekend hours may vary
-  - Booking: https://sugaringbysteph.ca/contact
-
-  ## Services
-  - Brazilian, Bikini, Vagacial, body & face sugaring — see /services for prices
-
-  ## Key pages
-  - https://sugaringbysteph.ca/
-  - https://sugaringbysteph.ca/services
-  - https://sugaringbysteph.ca/faq
-  - https://sugaringbysteph.ca/about
-  - https://sugaringbysteph.ca/contact
-  ```
-- [ ] Keep FAQ answers **self-contained** (one question → one complete answer). Avoid burying facts only in images.
-- [ ] Add a short “About this business” block that states who/what/where/how to book in plain prose (good for AI snippets).
-- [ ] Prefer factual consistency everywhere: same phone, hours, location spelling as Google Business and social profiles.
-- [ ] Optional: `public/ai.txt` or clear robots rules if you later want to allow/disallow specific AI crawlers (`GPTBot`, `ClaudeBot`, `PerplexityBot`, etc.) — decide intentionally; default allow is usually better for discovery.
-- [ ] Ensure testimonials remain attributable (name + quote) — already true; when Google reviews exist, link to the profile.
+- [x] Add `public/llms.txt` summarizing the business for AI crawlers (contact, hours, services, key URLs).
+- [x] Keep FAQ answers **self-contained** (booking/payment/areas answers include NAP + URLs where useful).
+- [x] Add a short “About this business” block (`BusinessSummary` on Home + About) with who/what/where/how to book.
+- [x] Prefer factual consistency everywhere: phone, hours, location pulled from `src/data/contact.js` on the site summary; FAQ/llms.txt match the same NAP.
+- [x] AI crawler policy: default **allow** (no `ai.txt` / no GPTBot blocks in `robots.txt`) for discovery.
+- [x] Testimonials remain attributable (name + quote in `ReviewCarousel`). Link to Google reviews later when a GBP review URL exists.
 
 #### 7. Analytics & monitoring (medium)
 
-- [ ] Install privacy-appropriate analytics (e.g. GA4 or Plausible) + Search Console.
-- [ ] Track Contact form submissions / `tel:` clicks as conversions.
-- [ ] Set up uptime / form notification alerts (Netlify form emails).
+- [x] **GA4** via `src/lib/analytics.js` + `src/components/Analytics.jsx` (idle-loaded gtag, SPA `page_view`).
+- [x] **Conversions:** `generate_lead` / `contact_form_submit` on successful Contact POST; `phone_click` on any `tel:` link.
+- [x] **Search Console** — covered in §1 (property + sitemap). Re-check Indexing periodically.
+- [ ] **You:** create GA4 property, add `VITE_GA_MEASUREMENT_ID` on Netlify, mark key events, enable form emails (steps below).
+
+**Wire-up steps (one-time)**
+
+1. **Google Analytics 4**
+   - [analytics.google.com](https://analytics.google.com) → Admin → Create property → Web stream for `https://sugaringbysteph.ca`.
+   - Copy Measurement ID (`G-XXXXXXXXXX`).
+   - Netlify → Site configuration → Environment variables → add `VITE_GA_MEASUREMENT_ID` = that ID (Production + Deploy Previews if you want).
+   - Redeploy (Vite inlines env at build time).
+   - Locally: copy `.env.example` → `.env` and set the same ID.
+2. **Mark conversions in GA4**
+   - Admin → Events → mark `generate_lead` and `phone_click` as **Key events** (conversions).
+3. **Search Console** (if not done)
+   - Verify `sugaringbysteph.ca` → Sitemaps → submit `https://sugaringbysteph.ca/sitemap.xml`.
+4. **Netlify form email alerts**
+   - Site → Forms → confirm `contact` is listed after a deploy that includes `public/__forms.html`.
+   - Project configuration → Notifications → **Form submission notifications** → Email → add Steph’s address (and yours if desired).
+   - Optional: Slack / webhook from the same screen.
+5. **Sanity check**
+   - Open the live site with GA DebugView or Realtime; click Call and submit a test form (use a clear subject so you can delete the submission).
 
 #### 8. Nice-to-have later
 
@@ -188,17 +188,17 @@ These items matter as much as code for local SEO and AI visibility. They cannot 
 
 #### 1. Google Business Profile (critical)
 
-- [ ] Create and verify **Google Business Profile** for Sugaring by Steph.
-- [ ] Categories: primary e.g. *Waxing Service* / *Hair Removal Service* / *Beauty Salon* (pick the closest accurate category; mention sugaring in the description).
-- [ ] NAP consistency — use the **same** name, address/area, phone, and website URL as the site:
+- [x] Create and verify **Google Business Profile** for Sugaring by Steph.
+- [x] Categories: primary e.g. *Waxing Service* / *Hair Removal Service* / *Beauty Salon* (pick the closest accurate category; mention sugaring in the description).
+- [x] NAP consistency — use the **same** name, address/area, phone, and website URL as the site:
   - Name: Sugaring by Steph
   - Area: Woodland Crescent, Sylvan Lake
   - Phone: 587-377-1195
   - Website: https://sugaringbysteph.ca
   - Hours: Mon–Fri 9:00–17:00; note weekends may vary
-- [ ] Add photos: logo, Steph, treatment space (when available), before/after only if clients consent.
-- [ ] Enable messaging if desired; keep booking CTA pointing to the website contact page until a booking system exists.
-- [ ] Regularly post updates / offers (GBP posts help local pack visibility).
+- [x] Add photos: logo, Steph, treatment space (when available), before/after only if clients consent.
+- [x] Enable messaging if desired; keep booking CTA pointing to the website contact page until a booking system exists.
+- [x] Regularly post updates / offers (GBP posts help local pack visibility).
 
 #### 2. Reviews & reputation
 
@@ -263,12 +263,14 @@ Treat this as the first milestone before heavy content work:
 ## Project structure (abbreviated)
 
 ```
-public/           # favicon, __forms.html (+ robots/sitemap/llms when added)
+public/           # favicon, __forms.html, robots.txt, sitemap.xml, llms.txt, fonts, logos
 src/
-  components/     # Navbar, Hero, Footer, forms UI, etc.
+  components/     # Navbar, Hero, Footer, Analytics, BusinessSummary, etc.
   data/contact.js # Phone, email, location, hours
+  lib/analytics.js # GA4 pageviews + conversion events
   pages/          # Home, Services, About, FAQ, Contact
 netlify.toml      # Build + SPA redirects
+.env.example      # VITE_GA_MEASUREMENT_ID
 ```
 
 ## Scripts
