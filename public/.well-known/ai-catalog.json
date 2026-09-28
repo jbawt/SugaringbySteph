@@ -1,0 +1,60 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Sugaring by Steph",
+    "identifier": "sugaringbysteph.ca",
+    "documentationUrl": "https://sugaringbysteph.ca/llms.txt",
+    "logoUrl": "https://sugaringbysteph.ca/logo.webp"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:sugaringbysteph.ca:site:llms",
+      "displayName": "Sugaring by Steph site summary",
+      "type": "application/ai-skill+md",
+      "url": "https://sugaringbysteph.ca/llms.txt",
+      "description": "Markdown overview of Sugaring by Steph for AI agents: contact, hours, services, and key page links.",
+      "tags": ["sugaring", "sylvan-lake", "hair-removal", "beauty"],
+      "capabilities": ["BusinessSummary", "ContactInfo", "ServiceList"],
+      "representativeQueries": [
+        "sugaring near me in Sylvan Lake",
+        "Brazilian sugaring prices in Sylvan Lake",
+        "how to book Sugaring by Steph",
+        "is sugaring less painful than waxing"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-09-28T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:sugaringbysteph.ca:site:services",
+      "displayName": "Sugaring services and prices",
+      "type": "text/html",
+      "url": "https://sugaringbysteph.ca/services",
+      "description": "Service menu and prices for Brazilian, bikini, body, and facial sugaring.",
+      "tags": ["pricing", "brazilian", "services"],
+      "capabilities": ["ServicePricing"],
+      "representativeQueries": [
+        "how much is a Brazilian sugaring",
+        "sugaring price list Sylvan Lake",
+        "what sugaring services does Steph offer"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-09-28T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:sugaringbysteph.ca:site:contact",
+      "displayName": "Book a sugaring appointment",
+      "type": "text/html",
+      "url": "https://sugaringbysteph.ca/contact",
+      "description": "Appointment request form, phone, and email for Sugaring by Steph.",
+      "tags": ["booking", "contact"],
+      "capabilities": ["AppointmentRequest"],
+      "representativeQueries": [
+        "book a sugaring appointment in Sylvan Lake",
+        "call Sugaring by Steph",
+        "request Brazilian sugaring appointment"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-09-28T00:00:00Z"
+    }
+  ]
+}

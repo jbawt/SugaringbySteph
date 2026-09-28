@@ -140,7 +140,8 @@ Client-only React means some bots see a thin shell. Improve crawl reliability:
 
 AI overviews and chat tools prefer **clear, factual, citeable** pages.
 
-- [x] Add `public/llms.txt` summarizing the business for AI crawlers (contact, hours, services, key URLs).
+- [x] Add `public/llms.txt` summarizing the business for AI crawlers (contact, hours, services, key URLs; Markdown links for Lighthouse agentic browsing).
+- [x] Publish ARD catalog at `/.well-known/ai-catalog.json` (+ `ard.json`) and point to it via `Agentmap` in `robots.txt`.
 - [x] Keep FAQ answers **self-contained** (booking/payment/areas answers include NAP + URLs where useful).
 - [x] Add a short “About this business” block (`BusinessSummary` on Home + About) with who/what/where/how to book.
 - [x] Prefer factual consistency everywhere: phone, hours, location pulled from `src/data/contact.js` on the site summary; FAQ/llms.txt match the same NAP.
