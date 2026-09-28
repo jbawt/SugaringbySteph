@@ -152,7 +152,7 @@ AI overviews and chat tools prefer **clear, factual, citeable** pages.
 - [x] **GA4** via `src/lib/analytics.js` + `src/components/Analytics.jsx` (idle-loaded gtag, SPA `page_view`).
 - [x] **Conversions:** `generate_lead` / `contact_form_submit` on successful Contact POST; `phone_click` on any `tel:` link.
 - [x] **Search Console** — covered in §1 (property + sitemap). Re-check Indexing periodically.
-- [ ] **You:** create GA4 property, add `VITE_GA_MEASUREMENT_ID` on Netlify, mark key events, enable form emails (steps below).
+- [x] **You:** create GA4 property, add `VITE_GA_MEASUREMENT_ID` on Netlify, mark key events, enable form emails (steps below).
 
 **Wire-up steps (one-time)**
 
@@ -172,14 +172,6 @@ AI overviews and chat tools prefer **clear, factual, citeable** pages.
    - Optional: Slack / webhook from the same screen.
 5. **Sanity check**
    - Open the live site with GA DebugView or Realtime; click Call and submit a test form (use a clear subject so you can delete the submission).
-
-#### 8. Nice-to-have later
-
-- [ ] Blog or “Guides” section (“How to prepare for Brazilian sugaring”) for long-tail queries.
-- [ ] Location landing copy if she expands service area (e.g. Red Deer clients).
-- [ ] Review schema (`AggregateRating`) **only after** real Google review counts exist — never invent ratings.
-- [ ] hreflang only if you add French or multi-region pages.
-
 ---
 
 ### Client tasks

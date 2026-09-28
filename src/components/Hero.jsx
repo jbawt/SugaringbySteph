@@ -144,17 +144,22 @@ export default function Hero({ className = '' }) {
             <div className="absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-gold-300/25 via-transparent to-gold-500/10 blur-2xl" />
             <div className="hero-visual-card relative flex h-[14rem] w-[14rem] items-center justify-center rounded-full border border-gold-300/50 bg-cream-50/60 shadow-[0_20px_60px_-24px_rgba(139,105,20,0.28)] backdrop-blur-sm dark:border-gold-300/40 dark:bg-cream-200/50 dark:shadow-[0_20px_60px_-24px_rgba(0,0,0,0.55)] sm:h-[22rem] sm:w-[22rem] lg:h-[28rem] lg:w-[28rem]">
               <div className="flex h-[86%] w-[86%] items-center justify-center overflow-hidden rounded-full border border-gold-200/80 bg-cream-100/80 dark:border-gold-200/50 dark:bg-cream-100/80">
-                <img
-                  src="/logo.webp"
-                  srcSet="/logo.webp 512w, /logo-2x.webp 1024w"
-                  sizes="(min-width: 1024px) 24rem, (min-width: 640px) 19rem, 12rem"
-                  alt="Sugaring by Steph"
-                  width={512}
-                  height={512}
-                  decoding="async"
-                  fetchPriority="high"
-                  className="hero-logo"
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet="/logo.webp 512w, /logo-2x.webp 1024w"
+                    sizes="(min-width: 1024px) 24rem, (min-width: 640px) 19rem, 12rem"
+                  />
+                  <img
+                    src="/logo.png"
+                    alt="Sugaring by Steph"
+                    width={512}
+                    height={512}
+                    decoding="async"
+                    fetchPriority="high"
+                    className="hero-logo"
+                  />
+                </picture>
               </div>
             </div>
 
